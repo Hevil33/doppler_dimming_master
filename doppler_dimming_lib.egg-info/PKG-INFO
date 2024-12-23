@@ -16,6 +16,7 @@ Requires-Dist: pandas
 Requires-Dist: scipy
 Requires-Dist: sunpy
 Requires-Dist: tqdm
+Requires-Dist: openpyxl
 
 # doppler_dimming_lib
 
