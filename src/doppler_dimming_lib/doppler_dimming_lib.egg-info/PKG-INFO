@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: doppler_dimming_lib
+Version: 1.0.0
+Summary: Library for the CODEX-METIS thomson scattering electron temperature diagnostic
+Author-email: Haudemand Hervé <herve.haudemand@inaf.it>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: astropy
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: sunpy
+Requires-Dist: tqdm
+
+# doppler_dimming_lib
+
+This is a simple example package. You can use [GitHub-flavored Markdown](https://guides.github.com/features/mastering-markdown/) to write your content.
+
+Download this package with 
