@@ -14,6 +14,8 @@ src/doppler_dimming_lib.egg-info/requires.txt
 src/doppler_dimming_lib.egg-info/top_level.txt
 src/doppler_dimming_lib/c_libraries/__init__.py
 src/doppler_dimming_lib/c_libraries/c_lib.py
+src/doppler_dimming_lib/c_libraries/compile_c.sh
+src/doppler_dimming_lib/c_libraries/integrands_lib.c
 src/doppler_dimming_lib/data/__init__.py
 src/doppler_dimming_lib/data/codex_filters/Measurements_Codex_Filters.xlsx
 src/doppler_dimming_lib/data/codex_filters/approx_filter_params.json
