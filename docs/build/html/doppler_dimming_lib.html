@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>doppler_dimming_lib package &mdash; doppler_dimming_lib 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            doppler_dimming_lib
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">doppler_dimming_lib package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-doppler_dimming_lib.codex">doppler_dimming_lib.codex module</a><ul>
+<li><a class="reference internal" href="#doppler_dimming_lib.codex.convolve_codex_filter"><code class="docutils literal notranslate"><span class="pre">convolve_codex_filter()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.codex.get_R_as_spline"><code class="docutils literal notranslate"><span class="pre">get_R_as_spline()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.codex.get_T_W_from_codex"><code class="docutils literal notranslate"><span class="pre">get_T_W_from_codex()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.codex.get_T_from_R"><code class="docutils literal notranslate"><span class="pre">get_T_from_R()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.codex.set_codex_transmittancies"><code class="docutils literal notranslate"><span class="pre">set_codex_transmittancies()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.codex.simulate_codex_measure"><code class="docutils literal notranslate"><span class="pre">simulate_codex_measure()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-doppler_dimming_lib.datacubes">doppler_dimming_lib.datacubes module</a><ul>
+<li><a class="reference internal" href="#doppler_dimming_lib.datacubes.datacube_from_map"><code class="docutils literal notranslate"><span class="pre">datacube_from_map()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.datacubes.map_from_ddt"><code class="docutils literal notranslate"><span class="pre">map_from_ddt()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-doppler_dimming_lib.integrals">doppler_dimming_lib.integrals module</a><ul>
+<li><a class="reference internal" href="#doppler_dimming_lib.integrals.I_dl_domega_dphi"><code class="docutils literal notranslate"><span class="pre">I_dl_domega_dphi()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.integrals.I_s_lambda"><code class="docutils literal notranslate"><span class="pre">I_s_lambda()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.integrals.integrated_I_s"><code class="docutils literal notranslate"><span class="pre">integrated_I_s()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-doppler_dimming_lib.metis">doppler_dimming_lib.metis module</a><ul>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.Ne_exponential_fit"><code class="docutils literal notranslate"><span class="pre">Ne_exponential_fit()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.datacube_from_file"><code class="docutils literal notranslate"><span class="pre">datacube_from_file()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.datacube_from_map"><code class="docutils literal notranslate"><span class="pre">datacube_from_map()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.geom_factor_function"><code class="docutils literal notranslate"><span class="pre">geom_factor_function()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.get_3d_param"><code class="docutils literal notranslate"><span class="pre">get_3d_param()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.get_pix_to_rsun"><code class="docutils literal notranslate"><span class="pre">get_pix_to_rsun()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.read_sav_model"><code class="docutils literal notranslate"><span class="pre">read_sav_model()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.resample_data"><code class="docutils literal notranslate"><span class="pre">resample_data()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-doppler_dimming_lib.utils">doppler_dimming_lib.utils module</a><ul>
+<li><a class="reference internal" href="#doppler_dimming_lib.utils.N_e_analytical"><code class="docutils literal notranslate"><span class="pre">N_e_analytical()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.utils.T_e_analytical"><code class="docutils literal notranslate"><span class="pre">T_e_analytical()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.utils.get_pix_to_rsun"><code class="docutils literal notranslate"><span class="pre">get_pix_to_rsun()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.utils.get_sun_center_from_map"><code class="docutils literal notranslate"><span class="pre">get_sun_center_from_map()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.utils.timeit"><code class="docutils literal notranslate"><span class="pre">timeit()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-doppler_dimming_lib">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">doppler_dimming_lib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">doppler_dimming_lib package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/doppler_dimming_lib.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="doppler-dimming-lib-package">
+<h1>doppler_dimming_lib package<a class="headerlink" href="#doppler-dimming-lib-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="doppler_dimming_lib.c_libraries.html">doppler_dimming_lib.c_libraries package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.c_libraries.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.c_libraries.html#module-doppler_dimming_lib.c_libraries.c_lib">doppler_dimming_lib.c_libraries.c_lib module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doppler_dimming_lib.c_libraries.html#doppler_dimming_lib.c_libraries.c_lib.get_c_library"><code class="docutils literal notranslate"><span class="pre">get_c_library()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.c_libraries.html#doppler-dimming-lib-c-libraries-integrands-lib-module">doppler_dimming_lib.c_libraries.integrands_lib module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.c_libraries.html#module-doppler_dimming_lib.c_libraries">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="doppler_dimming_lib.spectra.html">doppler_dimming_lib.spectra package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.spectra.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.spectra.html#module-doppler_dimming_lib.spectra.spectra">doppler_dimming_lib.spectra.spectra module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="doppler_dimming_lib.spectra.html#doppler_dimming_lib.spectra.spectra.get_spectrum_from_txt"><code class="docutils literal notranslate"><span class="pre">get_spectrum_from_txt()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="doppler_dimming_lib.spectra.html#doppler_dimming_lib.spectra.spectra.set_spectrum_level"><code class="docutils literal notranslate"><span class="pre">set_spectrum_level()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.spectra.html#module-doppler_dimming_lib.spectra">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-doppler_dimming_lib.codex">
+<span id="doppler-dimming-lib-codex-module"></span><h2>doppler_dimming_lib.codex module<a class="headerlink" href="#module-doppler_dimming_lib.codex" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.codex.convolve_codex_filter">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">convolve_codex_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_lambda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.codex.convolve_codex_filter" title="Link to this definition"></a></dt>
+<dd><p>Convolve a function I with the codex filter at _lambda transmissivity. For each available filter transmissivity T, computes the sum of</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>_lambda (float): filter center in Angstrom.
+I (callable): function to convolve, argument is lambda in Armstrong
+verbose (bool, optional): print info about computation. Defaults to True.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: convolution between I(lambda) and the filter transmissivity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.codex.get_R_as_spline">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">get_R_as_spline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">integral_function</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.codex.get_R_as_spline" title="Link to this definition"></a></dt>
+<dd><p>Find the cubic spline interpolator of the ratio function(T1)/function(T2). All the parameters of function must be provided as kwargs.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>function (callable): function to perform the ratio numerator/denominator
+lambda1 (float): numerator wavelenght in angstrom
+lambda2 (float): denominator wavelenght in angstrom</p>
+</dd>
+<dt>Returns:</dt><dd><p>PPoly: spline cubic interpolating 5.e5 &lt; T &lt; 3.e6</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.codex.get_T_W_from_codex">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">get_T_W_from_codex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Js</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p0</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#doppler_dimming_lib.codex.get_T_W_from_codex" title="Link to this definition"></a></dt>
+<dd><p>Uses least squares to find the values of temperature and solar wind that better fit the input Js.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rho (float): heliocentric distance in solar radii
+Js (list): codex intesities at the four wavelenghts, ordered
+p0 (list): initial guess for temperature and wind speed</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: fitted electron temperature and solar wind speed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.codex.get_T_from_R">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">get_T_from_R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.codex.get_T_from_R" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the electron tempearture from a CODEX measured ratio between filters. First gets R as spline for the selected rho, then gets T from the fitted spline.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ratio (float): ratio between two filters S2/T2
+rho (float): heliocentric distance in solar radii
+W (float, optional): wind speed in km/s. Defaults to 0.</p>
+</dd>
+<dt>Returns:</dt><dd><p>uncertainties.ufloat: inferred electron temperature</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.codex.set_codex_transmittancies">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">set_codex_transmittancies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">approx_filter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skipevery</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_transmittancy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.codex.set_codex_transmittancies" title="Link to this definition"></a></dt>
+<dd><p>Reads the excel file containing the filter transmittancies and sets the dictionary containing arrays of wavelenghts and transmittancies for each filter, ordered by center wavelenght.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>approx_filter (bool, optional): approximate filter transmissivity with a box function. This may some time, but results are often inconsistent. Defaults to False.
+skipevery (int, optional): sample one transmittance every n entries. Defaults to 10.
+min_transmittancy (float, optional): minimum transmittancy to consider, lower ones will be considered 0. Defaults to 0.001 (0.1%).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.codex.simulate_codex_measure">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">simulate_codex_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_e:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_e_function=&lt;function</span> <span class="pre">N_e_analytical&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#doppler_dimming_lib.codex.simulate_codex_measure" title="Link to this definition"></a></dt>
+<dd><p>Simulate the measurement from the four CODEX filters by convolving their response with Cram, 1976 integral</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rho (float): heliocentric distance in solar radii
+T_e (float): electron temperature in Kelvin
+wind_speed (float): wind speed in km/s
+N_e_function (callable, optional): electron density as a function of the heliocentric distance (in rsun). Defaults to utils.N_e_analytical.</p>
+</dd>
+<dt>Returns:</dt><dd><p>np.ndarray(4): filters measured values, ordered by filter wavelength (T1=393, S1=398, T2=405, S2=423)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-doppler_dimming_lib.datacubes">
+<span id="doppler-dimming-lib-datacubes-module"></span><h2>doppler_dimming_lib.datacubes module<a class="headerlink" href="#module-doppler_dimming_lib.datacubes" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.datacubes.datacube_from_map">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.datacubes.</span></span><span class="sig-name descname"><span class="pre">datacube_from_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_map</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.datacubes.datacube_from_map" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.datacubes.map_from_ddt">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.datacubes.</span></span><span class="sig-name descname"><span class="pre">map_from_ddt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hdu_ID</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resample_to</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.datacubes.map_from_ddt" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-doppler_dimming_lib.integrals">
+<span id="doppler-dimming-lib-integrals-module"></span><h2>doppler_dimming_lib.integrals module<a class="headerlink" href="#module-doppler_dimming_lib.integrals" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.integrals.I_dl_domega_dphi">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.integrals.</span></span><span class="sig-name descname"><span class="pre">I_dl_domega_dphi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lambda</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_e</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.integrals.I_dl_domega_dphi" title="Link to this definition"></a></dt>
+<dd><p>Interior integral, separated to allow calculations without integrating in dLOS</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rho (float): heliocentric distance in solar radii
+_lambda (float): wavelenght in angstrom
+T_e (float): electron temperature in Kelvin
+W (float): wind speed in km/s
+verbose (bool, optional): print additional info at each step for debugging purposes. Defaults to True.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: photospheric irradiance integrated over solar disc</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.integrals.I_s_lambda">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.integrals.</span></span><span class="sig-name descname"><span class="pre">I_s_lambda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.integrals.I_s_lambda" title="Link to this definition"></a></dt>
+<dd><p>Wrapper for integrated_I_s used to compute total brightness by passing component=3 to integrated_I_s.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float: integrated total brightness</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.integrals.integrated_I_s">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.integrals.</span></span><span class="sig-name descname"><span class="pre">integrated_I_s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lambda:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_e:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_x:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_x:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_e_function=&lt;function</span> <span class="pre">N_e_analytical&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.integrals.integrated_I_s" title="Link to this definition"></a></dt>
+<dd><p>Integrate thomson scattering over photospheric wavelenghts, solar disc dimension and line of sight (main integral from Cram 1976.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rho (float): heliocentric distance in solar radii
+_lambda (float): wavelenght in angstrom
+T_e (float): electron temperature
+W (float): wind speed in km/s
+component (int): polarized component to compute. With respect to solar limb, 0 is radial, 1 is tangent and 3 is the sum (total brightness)
+min_x (float, optional): integration limit for LOS away from observer in solar radii. Defaults to 10.
+max_x (float, optional): integration limit for LOS towards observer in solar radii. Defaults to 10.
+N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance. Defaults to utils.N_e_analytical.
+verbose (bool, optional): print additional info at each step. Defaults to True.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: integrated emission</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-doppler_dimming_lib.metis">
+<span id="doppler-dimming-lib-metis-module"></span><h2>doppler_dimming_lib.metis module<a class="headerlink" href="#module-doppler_dimming_lib.metis" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.Ne_exponential_fit">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">Ne_exponential_fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.metis.Ne_exponential_fit" title="Link to this definition"></a></dt>
+<dd><p>Fitted ne based on metis pB.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>x (float): heliocentric radial distance in Rsun
+b (np.ndarray): coefficients array</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: electron density at a given heliocentric radial distance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.datacube_from_file">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">datacube_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_in_pixel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.metis.datacube_from_file" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.datacube_from_map">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">datacube_from_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ne_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.metis.datacube_from_map" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.geom_factor_function">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">geom_factor_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.metis.geom_factor_function" title="Link to this definition"></a></dt>
+<dd><p>Geometric factor function from Van de Hulst.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>r (float): heliocentric distance in solar radii</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: computed geometric factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.get_3d_param">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">get_3d_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pix_to_rsun</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coefficients</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixel_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sun_center_pos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_pix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.metis.get_3d_param" title="Link to this definition"></a></dt>
+<dd><p>Returns the electron density or temperature from a Metis map fitted with DDT. For the electron temperature calculation see utls.T_e_analytical.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>param (str): parameter to calculate, either “Ne” or “Te”
+map_los (sunpy.map.Map): map contaning the parameter and metadata in sunpy format
+coefficients (np.ndarray): [8, 360] array containing the fitted coefficients in the first axis.
+pixel_pos (list): [y, x] pixel coordinates at which to calculate the parameter.
+sun_center_pos (list): [y, x] pixel coordinates of the sun center. Provided by the user to avoid useless calculations.
+x_los (float): distance in pixels along the line of sight at which to calculate the parameter.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: electron density at set location</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.get_pix_to_rsun">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">get_pix_to_rsun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_map:</span> <span class="pre">&lt;sunpy.map.map_factory.MapFactory</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f275206f2c0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.metis.get_pix_to_rsun" title="Link to this definition"></a></dt>
+<dd><p>Returns the platescale in pixel/Rsun</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>input_map (sunpy.map.Map): map for which to calculate the ratio</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: pixel/Rsun platescale</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.read_sav_model">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">read_sav_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#doppler_dimming_lib.metis.read_sav_model" title="Link to this definition"></a></dt>
+<dd><p>Reads a sav idl file and returns the parameters list.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filename (str): path to idl save file (.sav)</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: list of 3d array containing the red parameters. In order: positions array, sun radial distances, sun latitude angle, densities, electron temperatures, proton temperatures, solar wind speed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.resample_data">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">resample_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_dimension</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ne_header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ne_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ne_polar_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.metis.resample_data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-doppler_dimming_lib.utils">
+<span id="doppler-dimming-lib-utils-module"></span><h2>doppler_dimming_lib.utils module<a class="headerlink" href="#module-doppler_dimming_lib.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.utils.N_e_analytical">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.utils.</span></span><span class="sig-name descname"><span class="pre">N_e_analytical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.utils.N_e_analytical" title="Link to this definition"></a></dt>
+<dd><p>Returns the electron density as a radial function from sun center.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>r (float): radial distance in R_sun</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: electron density in cm-3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.utils.T_e_analytical">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.utils.</span></span><span class="sig-name descname"><span class="pre">T_e_analytical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_e_function=&lt;function</span> <span class="pre">N_e_analytical&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.utils.T_e_analytical" title="Link to this definition"></a></dt>
+<dd><p>Returns an analytical electron temperature as a function of doppler_dimming_lim.utils.N_e_analytical from Lemaire &amp; Stegen 2016</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rho (float): heliocentric distance in solar radii
+N_e_function (callable): density as a function of heliocentric distance (in sr). Use a polynomial to interpolate data if necessary</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: electron temperature profile</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.utils.get_pix_to_rsun">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.utils.</span></span><span class="sig-name descname"><span class="pre">get_pix_to_rsun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.utils.get_pix_to_rsun" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.utils.get_sun_center_from_map">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.utils.</span></span><span class="sig-name descname"><span class="pre">get_sun_center_from_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.utils.get_sun_center_from_map" title="Link to this definition"></a></dt>
+<dd><p>Returns the coordinates of the pixel containing the sun center. Use this instead of CRPIX!!!!</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>map (sunpy.map.Map): map containing the image and reference frame</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: coordinate x and y</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.utils.timeit">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.utils.</span></span><span class="sig-name descname"><span class="pre">timeit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.utils.timeit" title="Link to this definition"></a></dt>
+<dd><p>Wrapper for timing functions’ execution times. Prints the difference between starting and ending time.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>func (callable): function of which to measure the execution time</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-doppler_dimming_lib">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-doppler_dimming_lib" title="Link to this heading"></a></h2>
+<p>AAAAAAAAAAAAAAAAAAAAAA</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Hervé Haudemand.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

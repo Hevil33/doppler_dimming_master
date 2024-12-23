@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "wheel", "Cython"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "doppler_dimming_lib"
+version = "1.0.0"
+authors = [
+  { name="Haudemand Hervé", email="herve.haudemand@inaf.it" },
+]
+description = "Library for the CODEX-METIS thomson scattering electron temperature diagnostic"
+readme = "README.md"
+dependencies = [
+    "astropy",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scipy",
+    "sunpy",
+    "tqdm",
+]
+requires-python = ">=3.12"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
