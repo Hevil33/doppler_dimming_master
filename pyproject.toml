@@ -27,4 +27,10 @@ classifiers = [
 ]
 
 [tool.setuptools.packages.find]
-where = ["src/doppler_dimming_lib"]
+namespaces = true
+where = ["src"]
+
+[tool.setuptools.package-data]
+"doppler_dimming_lib.data.codex_filter" = ["*.json", "*.xlsx"]
+"doppler_dimming_lib.data.photospheric_spectra" = ["*.txt"]
+#
