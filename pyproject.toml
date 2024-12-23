@@ -18,6 +18,7 @@ dependencies = [
     "scipy",
     "sunpy",
     "tqdm",
+    "openpyxl",
 ]
 requires-python = ">=3.12"
 classifiers = [

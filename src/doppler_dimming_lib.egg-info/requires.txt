@@ -5,3 +5,4 @@ pandas
 scipy
 sunpy
 tqdm
+openpyxl
