@@ -28,7 +28,7 @@ classifiers = [
 
 [tool.setuptools]
 ext-modules = [
-  {name="integrands_lib.so",  sources=["integrands_lib.c"]}
+  {name="doppler_dimming_lib.c_libraries.integrands_lib.so",  sources=["doppler_dimming_lib.c_libraries.integrands_lib.c"]}
 ]
 
 [tool.setuptools.packages.find]
