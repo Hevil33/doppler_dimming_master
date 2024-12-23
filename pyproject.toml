@@ -26,11 +26,16 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[tool.setuptools]
+ext-modules = [
+  {name="integrands_lib.so",  sources=["integrands_lib.c"]}
+]
+
 [tool.setuptools.packages.find]
 namespaces = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-"doppler_dimming_lib.data.codex_filter" = ["*.json", "*.xlsx"]
+"doppler_dimming_lib.data.codex_filters" = ["*.json", "*.xlsx"]
 "doppler_dimming_lib.data.photospheric_spectra" = ["*.txt"]
 #
