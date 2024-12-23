@@ -1,7 +1,6 @@
 LICENSE
 README.md
 pyproject.toml
-src/setup.py
 src/doppler_dimming_lib/__init__.py
 src/doppler_dimming_lib/codex.py
 src/doppler_dimming_lib/datacubes.py
@@ -15,6 +14,11 @@ src/doppler_dimming_lib.egg-info/requires.txt
 src/doppler_dimming_lib.egg-info/top_level.txt
 src/doppler_dimming_lib/c_libraries/__init__.py
 src/doppler_dimming_lib/c_libraries/c_lib.py
+src/doppler_dimming_lib/data/__init__.py
+src/doppler_dimming_lib/data/photospheric_spectra/AllMODEtr.txt
+src/doppler_dimming_lib/data/photospheric_spectra/AllSMRTEtr.txt
+src/doppler_dimming_lib/data/photospheric_spectra/second_spectrum.txt
+src/doppler_dimming_lib/data/photospheric_spectra/thekaekara.txt
 src/doppler_dimming_lib/spectra/__init__.py
 src/doppler_dimming_lib/spectra/spectra.py
 tests/test.py

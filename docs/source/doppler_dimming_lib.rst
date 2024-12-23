@@ -8,6 +8,7 @@ Subpackages
    :maxdepth: 4
 
    doppler_dimming_lib.c_libraries
+   doppler_dimming_lib.data
    doppler_dimming_lib.spectra
 
 Submodules
