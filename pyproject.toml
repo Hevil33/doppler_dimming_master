@@ -27,12 +27,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
-# dont use, experimental
-#[tool.setuptools]
-#ext-modules = [
-#  {name="doppler_dimming_lib.c_libraries.integrands_lib.so",  sources=["doppler_dimming_lib.c_libraries.integrands_lib.c"]}
-#]
-
 [tool.setuptools.packages.find]
 namespaces = true
 where = ["src", "tests"]
@@ -42,3 +36,9 @@ where = ["src", "tests"]
 "doppler_dimming_lib.data.photospheric_spectra" = ["*.txt"]
 "doppler_dimming_lib.c_libraries" = ["*.sh", "*.c"]
 tests = ["*.py"]
+
+# dont use, experimental
+[tool.setuptools]
+ext-modules = [
+  {name="doppler_dimming_lib.c_libraries.integrands_lib",  sources=["doppler_dimming_lib.c_libraries.integrands_lib.c"]}
+]

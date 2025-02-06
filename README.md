@@ -4,14 +4,23 @@ Copy the repository locally
 
 `git clone https://github.com/Hevil33/doppler_dimming_master`
 
-then cd in the downloaded folder install the library with pip
+Go into the downloaded folder and install the library with pip
 
+`cd doppler_dimming_master`
 `pip install .`
 
 
-lastly, to compile the auxiliary c libraries, cd into the site-packages folder and run the `compile.sh`. It will use gcc as default, if you don't have it you can use any other compiler as long as it produces the right `integrands_lib.so` in the same folder. The syntax is
+C files need to be compiled for this module to work.
+Go into the installation folder (usually pythonX.X/site-packages) and run the script
+
+`./compile.sh`
+
+This script contains the command to compile the libraries which is
 
 `gcc -lm -shared -fPIC -o integrands_lib.so integrands_lib.c`
+
+gcc is used by default. 
+If you don't have gcc, any other C compiler will work as long as `integrands_lib.so` is correctly produced in the same folder. 
 
 ## Test
 
