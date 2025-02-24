@@ -9,8 +9,11 @@ from astropy.coordinates import SkyCoord
 from astropy.io import fits
 from scipy.io import readsav
 
-from doppler_dimming_lib.utils import (T_e_analytical, get_pix_to_rsun,
-                                       get_sun_center_from_map)
+from doppler_dimming_lib.utils import (
+    T_e_analytical,
+    get_pix_to_rsun,
+    get_sun_center_from_map,
+)
 
 
 def read_sav_model(filename: str) -> list:

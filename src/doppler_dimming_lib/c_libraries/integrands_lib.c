@@ -4,7 +4,7 @@
 #include <string.h>
 
 #define K_CGS (1.380649e-16)           // erg K-1 / cm2 g s-2 K-1
-#define M_E_CGS (9.1093837e-28)        // grams
+#define M_E_CGS (9.1093897e-28)        // grams
 #define C_CGS (2.99792458e10)          // speed of light cm s-1
 #define C_CGS_INV (3.33564095e-11)     // speed of light cm s-1
 #define SIGMA_E_CGS (6.6524587158e-25) // electron cross section [cm2]
@@ -12,7 +12,7 @@
 #define CM_TO_A (1.e8)                 // cm to angstrom conversion
 #define A_TO_CM (1.e-8)                // angstrom to cm conversion
 #define K_SI (1.380649e-23)            // J K-1
-#define M_E_SI (9.1093837e-31)         // Kg
+#define M_E_SI (9.1093897e-31)         // Kg
 #define C_SI (2.99792458e8)            // speed of light m s-1
 #define SIGMA_E_SI (6.6524587158e-29)  // electron cross section [m2]
 #define M_TO_A (1.e10)                 // m to angstrom conversion
@@ -143,13 +143,17 @@ double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed
     double F_lambda_nm1, F_lambda_n, F_lambda_np1;
     double delta_nm1, delta_n, delta_np1;
     double exponent_nm1, exponent_n, exponent_np1;
-    double I_lambda_nm1, I_lambda_n, I_lambda_np1, q;
+    double I_lambda_nm1, I_lambda_n, I_lambda_np1, q_c;
     int counter = 0;
 
     double nsigma_sqrt2_b = nsigma * SQRT2 * b;
 
-    // TODO: OPTIMIZE BY REMOVING THE IF
-    q = 5508. * sqrt(T_corona * 1.e-6) * KM_TO_CM * C_CGS_INV; // [cm/s]/c, Cram 1976 pag 7
+    // q_c = 5508. * sqrt(T_corona * 1.e-6) * KM_TO_CM * C_CGS_INV; // [cm/s]/c, Cram 1976 pag 7
+    // q_c = 5505.694902726358 * sqrt(T_corona * 1.e-6) * KM_TO_CM * C_CGS_INV; // more precise from scipy constants
+    // debug(q_c);
+    q_c = sqrt(2. * K_CGS * T_corona / M_E_CGS) * C_CGS_INV; // complete
+    // debug(q_c);
+    // debug(sqrt(2. * K_CGS / M_E_CGS / 1.e-6));
 
     // Trapezoidal rule
     for (int i = 0; i < points_n - 1; i++)
@@ -157,7 +161,7 @@ double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed
         lambda_nm1 = wls[i];
         F_lambda_nm1 = F_lambdas[i];
 
-        delta_nm1 = lambda_nm1 * q; //* C_CGS_INV;0
+        delta_nm1 = lambda_nm1 * q_c; //* C_CGS_INV;0
         if (fabs(lambda_nm1 - lambda) > nsigma_sqrt2_b * delta_nm1)
             continue; // skip if two lambdas are too far from each other
         counter++;
@@ -167,7 +171,7 @@ double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed
 
         exponent_nm1 = (lambda - lambda_nm1 * wind_factor) / (2 * delta_nm1 * b);
 
-        delta_n = lambda_n * q; // * C_CGS_INV;
+        delta_n = lambda_n * q_c; // * C_CGS_INV;
         exponent_n = (lambda - lambda_n * wind_factor) / (2 * delta_n * b);
 
         I_lambda_nm1 = (I_lambda_mu(mu, lambda_nm1, F_lambda_nm1) * exp((-(exponent_nm1 * exponent_nm1))) / (DOUBLE_SQRTPI * delta_nm1 * b));
@@ -189,7 +193,7 @@ double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed
     debug(delta_nm1);
     debug(I_lambda_n);
     debug(I_lambda_nm1);
-    debug(q);
+    debug(q_c);
     debug(b); /**/
 
     I_lambda_sum *= 0.5; // trapezoid area brought out of integral

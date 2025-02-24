@@ -10,7 +10,7 @@ from doppler_dimming_lib.metis import Ne_exponential_fit, geom_factor_function
 from doppler_dimming_lib.utils import get_sun_center_from_map
 
 
-def datacube_from_map(_map, **kwargs):
+def _datacube_from_map(_map, **kwargs):
 
     side_pix = _map.data.shape[0]
     dc = np.zeros(shape=(side_pix, side_pix, side_pix), dtype=float)

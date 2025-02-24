@@ -93,11 +93,10 @@ def T_e_analytical(rho: float, N_e_function=N_e_analytical, **kwargs) -> float:
 
     almost_infinity = 1.0e4  # approximate big radius
 
-    N_e_rho = N_e_physical_boundary(rho, **kwargs)
+    if rho <= 1:  # underfined if less than a solar radius
+        return 0
 
-    # if isinstance(N_e_rho, np.ndarray):
-    #    print("reshaped")
-    #    N_e_rho = N_e_rho.reshape(1)[0]
+    N_e_rho = N_e_physical_boundary(rho, **kwargs)
 
     return (
         (

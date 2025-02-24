@@ -1,8 +1,0 @@
-astropy
-matplotlib
-numpy
-pandas
-scipy
-sunpy
-tqdm
-openpyxl

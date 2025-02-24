@@ -40,6 +40,6 @@ tests = ["*.py"]
 # dont use, experimental
 [tool.setuptools]
 package-dir = {"" = "src"}
-ext-modules = [
-  {name="doppler_dimming_lib.c_libraries.integrands_lib",  sources=["src/doppler_dimming_lib/c_libraries/integrands_lib.c"]}
-]
+# ext-modules = [
+#   {name="doppler_dimming_lib.c_libraries.integrands_lib",  sources=["src/doppler_dimming_lib/c_libraries/integrands_lib.c"]}
+# ]

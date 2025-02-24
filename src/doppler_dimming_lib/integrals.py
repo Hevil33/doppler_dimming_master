@@ -164,8 +164,8 @@ def integrated_I_s(
     T_e: float,
     wind_speed: float,
     component: int,
-    min_x: float = 10,
-    max_x: float = 10,
+    min_x: float = None,
+    max_x: float = None,
     N_e_function=N_e_analytical,
     verbose=True,
 ) -> float:
@@ -191,6 +191,15 @@ def integrated_I_s(
     subinterval_limit = 10
     max_chebyshev_order = 5
     # ----------
+
+    if min_x is None:
+        min_x = 10.0
+        min_x = rho**3
+        min_x = np.inf
+    if max_x is None:
+        max_x = 10.0
+        max_x = rho**3
+        max_x = np.inf
 
     # sanity check on rho (can't be a solar radius or less)
     if rho <= 1:
@@ -326,8 +335,6 @@ def integrated_I_s(
 
             N_e = N_e_function(r)  # * r / x  #  dx = r/sqrt(r^2 - rho^2) dr
 
-            # print(args)
-
             return (
                 N_e
                 * integrate.nquad(
@@ -348,8 +355,8 @@ def integrated_I_s(
             min_x,
             # limit=subinterval_limit,
             # maxp1=max_chebyshev_order,
-            epsrel=0.01,  # absolute errorr
-            points=[0, np.sqrt(rho * rho)],
+            # epsrel=0.01,  # absolute errorr
+            # points=[0, np.sqrt(rho * rho)],
             full_output=1,
         )
 
@@ -364,8 +371,8 @@ def integrated_I_s(
                 max_x,
                 # limit=subinterval_limit,
                 # maxp1=max_chebyshev_order,
-                epsrel=0.01,  # absolute errorr
-                points=[0, np.sqrt(rho * rho)],
+                # epsrel=0.01,  # absolute errorr
+                # points=[0, np.sqrt(rho * rho)],
                 full_output=1,
             )
 

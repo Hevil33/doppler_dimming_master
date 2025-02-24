@@ -9,8 +9,11 @@ from astropy.coordinates import SkyCoord
 from astropy.io import fits
 from scipy.io import readsav
 
-from doppler_dimming_lib.utils import (T_e_analytical, get_pix_to_rsun,
-                                       get_sun_center_from_map)
+from doppler_dimming_lib.utils import (
+    T_e_analytical,
+    get_pix_to_rsun,
+    get_sun_center_from_map,
+)
 
 
 def read_sav_model(filename: str) -> list:
@@ -305,9 +308,9 @@ def datacube_from_map(ne_map, coefficients):
     zs = np.linspace(zstart_rsun, zstart_rsun + side_rsun, side_pix)
 
     coordinates = np.empty(shape=(3, len(zs), len(ys), len(xs)))
-    for xi, x_rsun in enumerate(xs):
+    for zi, z_rsun in enumerate(zs):
         for yi, y_rsun in enumerate(ys):
-            for zi, z_rsun in enumerate(zs):
+            for xi, x_rsun in enumerate(xs):
                 coordinates[0, zi, yi, xi] = z_rsun - 0.5 * pix_to_rsun
                 coordinates[1, zi, yi, xi] = y_rsun - 0.5 * pix_to_rsun
                 coordinates[2, zi, yi, xi] = x_rsun - 0.5 * pix_to_rsun
