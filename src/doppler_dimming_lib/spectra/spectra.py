@@ -27,6 +27,12 @@ def get_user_data(spectrum_level: int) -> list:
         list: array of wavelenghts and array of irradiances.
     """
     spectrum = get_spectrum_from_txt(spectrum_level)
+
+    # added 25 feb 2025: restrict the spectrum to speed up. Sigma is about 200-300 nm, interesting range is 3700 - 4700
+    restrict_wl_condition = (spectrum[0] > 3.0e-5) & (spectrum[0] < 5.5e-5)
+    spectrum = spectrum[:, restrict_wl_condition]
+    # added 25 feb 2025
+
     wls = np.ascontiguousarray(np.array(spectrum[0], dtype=np.double))
     Fls = np.ascontiguousarray(np.array(spectrum[1], dtype=np.double))
 
@@ -117,7 +123,9 @@ def get_spectrum_from_txt(precision_level: int = 0) -> np.ndarray:
         I_erg = I.to(erg_s_cm2_A_sr)
         all_ws.append(wl)
         all_Is.append(I_erg.value)
+
     complete_spectrum = [all_ws, all_Is]
+    complete_spectrum = np.array(complete_spectrum, dtype=np.double)
 
     print("Done!")
     return np.array(complete_spectrum)

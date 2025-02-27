@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy import optimize
+from scipy.integrate import cumulative_trapezoid
 from scipy.interpolate import CubicSpline
 
 from doppler_dimming_lib.integrals import I_s_lambda
@@ -111,7 +112,10 @@ def convolve_codex_filter(_lambda: float, I, verbose: bool = True) -> float:
 
     if verbose:
         info(f"Convolving filter response ({len(wavelenghts)} points...)")
-    Is = [I(x) for x in wavelenghts]
+    Is = np.array([I(x) for x in wavelenghts])
+
+    # return np.sum(cumulative_trapezoid(wavelenghts, Is * transmittancies, initial=0))
+
     sum = 0
     for i in range(0, len(wavelenghts[:-1])):
         sum += (
@@ -125,6 +129,45 @@ def convolve_codex_filter(_lambda: float, I, verbose: bool = True) -> float:
         info("Done!")
 
     return sum
+
+
+def simulate_codex_filter(
+    filter_name: str,
+    rho: float,
+    T_e: float,
+    wind_speed: float,
+    N_e_function=N_e_analytical,
+    verbose: bool = True,
+) -> float:
+    """Simulate the measurement from a CODEX filter by convolving its response with Cram, 1976 integral
+
+    Args:
+        filter_name (str): filter name, can be "T1", "S1", "T2" or "S2"
+        rho (float): heliocentric distance in solar radii
+        T_e (float): electron temperature in Kelvin
+        wind_speed (float): wind speed in km/s
+        N_e_function (callable, optional): electron density as a function of the heliocentric distance (in rsun). Defaults to utils.N_e_analytical.
+
+    Returns:
+        float: value measured with selected filter
+    """
+
+    def J_s_lambda(_lambda):
+        """Wrapper for I_s_lambda for passing it to convolve_codex_filter"""
+        return I_s_lambda(
+            rho=rho,
+            _lambda=_lambda,
+            T_e=T_e,
+            wind_speed=wind_speed,
+            N_e_function=N_e_function,
+            verbose=verbose,
+        )  # verbose disabled here, too many prints
+
+    J_s = convolve_codex_filter(
+        FILTER_CENTERS[filter_name], I=J_s_lambda, verbose=verbose
+    )
+
+    return J_s
 
 
 # @lru_cache
@@ -147,25 +190,13 @@ def simulate_codex_measure(
         np.ndarray(4): filters measured values, ordered by filter wavelength (T1=393, S1=398, T2=405, S2=423)
     """
 
-    def J_s_lambda(_lambda):
-        """Wrapper for I_s_lambda for passing it to convolve_codex_filter"""
-        return I_s_lambda(
-            rho=rho,
-            _lambda=_lambda,
-            T_e=T_e,
-            wind_speed=wind_speed,
-            N_e_function=N_e_function,
-            verbose=verbose,
-        )  # verbose disabled here, too many prints
-
-    # simulate two CODEX measurements
-    J_s_T1 = convolve_codex_filter(FILTER_CENTERS["T1"], I=J_s_lambda, verbose=verbose)
-    J_s_S1 = convolve_codex_filter(FILTER_CENTERS["S1"], I=J_s_lambda, verbose=verbose)
-    J_s_T2 = convolve_codex_filter(FILTER_CENTERS["T2"], I=J_s_lambda, verbose=verbose)
-    J_s_S2 = convolve_codex_filter(FILTER_CENTERS["S2"], I=J_s_lambda, verbose=verbose)
-
-    Js = np.array([J_s_T1, J_s_S1, J_s_T2, J_s_S2], dtype=float)
-
+    Js = np.array(
+        [
+            simulate_codex_filter(name, rho, T_e, wind_speed, N_e_function, verbose)
+            for name in FILTER_CENTERS.keys()
+        ],
+        dtype=float,
+    )
     return Js
 
 

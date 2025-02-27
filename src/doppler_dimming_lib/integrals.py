@@ -194,11 +194,11 @@ def integrated_I_s(
 
     if min_x is None:
         min_x = 10.0
-        min_x = rho**3
+        # min_x = rho**3
         min_x = np.inf
     if max_x is None:
         max_x = 10.0
-        max_x = rho**3
+        # max_x = rho**3
         max_x = np.inf
 
     # sanity check on rho (can't be a solar radius or less)
@@ -284,7 +284,10 @@ def integrated_I_s(
                 [0.0, 2.0 * np.pi],  # phi
                 _get_omega_boundary,  # cos_omega
             ]
-            opts = [{"epsrel": 0.01}, {"epsrel": 0.01}]
+            opts = [
+                {"epsrel": 0.01},
+                {"epsrel": 0.01},
+            ]
             Is[i] = (
                 Nes[i]
                 * integrate.nquad(
@@ -321,13 +324,15 @@ def integrated_I_s(
                     # "maxp1": max_chebyshev_order,
                     # "limit": subinterval_limit,
                     # "points": [0, 2 * np.pi],
-                    "epsrel": 0.01,
+                    # "epsrel": 0.01,
+                    "epsrel": 1.0e-6,
                 },  # phi
                 {
                     # "maxp1": max_chebyshev_order,
                     # "limit": subinterval_limit,
                     # "points": [0, 1],
-                    "epsrel": 0.01,
+                    # "epsrel": 0.01,
+                    "epsrel": 1.0e-6,
                 },  # cos_omega
             ]
 
@@ -349,26 +354,30 @@ def integrated_I_s(
         # inf_bound = np.sqrt(min_r * min_r - rho * rho)
         # sup_bound = np.sqrt(max_r * max_r - rho * rho)
 
-        sun_to_inf = integrate.quad(
+        sun_to_sup = integrate.quad(
             integrand_dx,
             0.0,
-            min_x,
+            max_x,
             # limit=subinterval_limit,
             # maxp1=max_chebyshev_order,
             # epsrel=0.01,  # absolute errorr
+            epsrel=1.0e-6,  # absolute errorr
             # points=[0, np.sqrt(rho * rho)],
             full_output=1,
         )
+        # print(sun_to_sup)
+        # sys.exit()
 
-        symmetric_corona = False
+        # symmetric corona can be applied any time Ne(r)==Ne(-r), almost always the case
+        symmetric_corona = True
 
         if symmetric_corona:
-            return normalization * (2.0 * sun_to_inf[0])
+            return normalization * (2.0 * sun_to_sup[0])
         else:
-            sun_to_sup = integrate.quad(
+            sun_to_inf = integrate.quad(
                 integrand_dx,
+                -min_x,
                 0.0,
-                max_x,
                 # limit=subinterval_limit,
                 # maxp1=max_chebyshev_order,
                 # epsrel=0.01,  # absolute errorr

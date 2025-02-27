@@ -162,9 +162,13 @@ double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed
         F_lambda_nm1 = F_lambdas[i];
 
         delta_nm1 = lambda_nm1 * q_c; //* C_CGS_INV;0
+
         if (fabs(lambda_nm1 - lambda) > nsigma_sqrt2_b * delta_nm1)
             continue; // skip if two lambdas are too far from each other
         counter++;
+        // debug(lambda_nm1 * 1.e8);
+        // debug(lambda * 1.e8);
+        // debug(nsigma_sqrt2_b * delta_nm1 * 1.e8);
 
         lambda_n = wls[i + 1];
         F_lambda_n = F_lambdas[i + 1];
@@ -181,8 +185,11 @@ double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed
     }
 
     /*
-    printf("\n");
+    debug(lambda);
     printf("value of counter is: %d\n", counter);
+    printf("value of points_n is: %d\n", points_n);
+    exit(0);
+    printf("\n");
     debug(mu);
     debug(I_lambda_mu(mu, lambda_n, F_lambda_n));
     debug(lambda);
