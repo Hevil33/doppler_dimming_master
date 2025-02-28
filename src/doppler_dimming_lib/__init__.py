@@ -11,6 +11,7 @@ from .codex import (
     get_T_from_R,
     get_T_W_from_codex,
     set_codex_transmittancies,
+    simulate_codex_filter,
     simulate_codex_measure,
 )
 from .integrals import I_dl_domega_dphi, I_s_lambda, integrated_I_s

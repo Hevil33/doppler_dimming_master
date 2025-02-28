@@ -263,6 +263,7 @@ def get_T_W_from_codex(rho: float, Js: list, p0: list) -> list:
 
 
 # @functools.lru_cache
+@functools.cache
 def get_R_as_spline(integral_function, lambda1: float, lambda2: float, **kwargs):
     """Find the cubic spline interpolator of the ratio function(T1)/function(T2). All the parameters of function must be provided as kwargs.
 
@@ -285,10 +286,12 @@ def get_R_as_spline(integral_function, lambda1: float, lambda2: float, **kwargs)
         R2 = integral_function(T_e=T, _lambda=lambda2, **kwargs, verbose=False)
         Rs.append(R1 / R2)
 
+    Rs, Ts = zip(*sorted(zip(Rs, Ts)))  # without this cubicspline doesnt work
+
     pol = CubicSpline(Rs, Ts)
 
     if False:
-        fig, ax = plt.subplots(dpi=200)
+        fig, ax = plt.subplots(dpi=200, constrained_layout=True)
         ax.plot(Rs, Ts, "b+")
         ax.plot(Rs, pol(Rs), "r-")
         ax.set_xlabel("R")
