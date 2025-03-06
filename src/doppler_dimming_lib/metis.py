@@ -283,14 +283,14 @@ def datacube_from_map(ne_map, coefficients):
                     "Ne",
                     pix_to_rsun,
                     coefficients,
-                    pixel_pos=[y_pix, x_pix],
-                    sun_center_pos=[y_center, x_center],
-                    z_pix=z_pix - z_center,
+                    pixel_pos=[y_pix + 0.5, x_pix + 0.5],
+                    sun_center_pos=[y_center + 0.5, x_center + 0.5],
+                    z_pix=z_pix - z_center + 0.5,
                 )
 
     # coordinates in rsun/
     side_rsun = side_pix * pix_to_rsun
-    zstart_rsun = -z_center * pix_to_rsun
+    zstart_rsun = (-z_center) * pix_to_rsun
     ystart_rsun = (-y_center) * pix_to_rsun
     xstart_rsun = (-x_center) * pix_to_rsun
 
@@ -458,9 +458,10 @@ def datacube_from_file(filename, size_in_pixel):
 
         plt.show()
 
+    # not needed
+    """
     occulter_rsun = ne_map.meta["INN_FOV"] * 3600 / ne_map.meta["RSUN_ARC"]
     pix_to_rsun = ne_map.meta["CDELT1"] / ne_map.meta["RSUN_ARC"]
-
     fitted_polar = np.zeros_like(ne_polar_data, dtype=float)
     for angle in range(ne_polar_data.shape[1]):
         for pixel in range(ne_polar_data.shape[0]):
@@ -468,11 +469,12 @@ def datacube_from_file(filename, size_in_pixel):
             fitted_polar[pixel, angle] = Ne_exponential_fit(
                 pixel * pix_to_rsun + occulter_rsun,
                 ne_coeffs_data[:, angle],
-            )
+            )"
 
     # geom_factor_padded, fitted_polar_padded = get_geom_factor(
     #    ne_map, ne_polar_data, fitted_polar
     # )
+    """
 
     dc, coordinates = datacube_from_map(ne_map, ne_coeffs_data)
 

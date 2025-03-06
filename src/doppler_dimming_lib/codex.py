@@ -262,6 +262,9 @@ def get_T_W_from_codex(rho: float, Js: list, p0: list) -> list:
         return params
 
 
+from doppler_dimming_lib.utils import timeit
+
+
 # @functools.lru_cache
 @functools.cache
 def get_R_as_spline(integral_function, lambda1: float, lambda2: float, **kwargs):
@@ -278,13 +281,49 @@ def get_R_as_spline(integral_function, lambda1: float, lambda2: float, **kwargs)
 
     # print("Extracting R(T)...")
 
-    # use 10 points to interpolate a cubic spline to R(T)
-    Ts = np.linspace(5.0e5, 2.0e6, 10)
+    num_of_samples = 10  # previous
+    num_of_samples = 5  # found that 5 points are enough to approximate with good precision, see thesis
+
+    # interpolate a cubic spline to R(T)
+    Ts = np.linspace(5.0e5, 2.0e6, num_of_samples)
     Rs = []
     for T in Ts:
         R1 = integral_function(T_e=T, _lambda=lambda1, **kwargs, verbose=False)
         R2 = integral_function(T_e=T, _lambda=lambda2, **kwargs, verbose=False)
         Rs.append(R1 / R2)
+
+    # rescale non-integrated spline into the range of integrated spline. Allows a more precise range without the need to integrate filters for all points, BUT TIME IS 3X to 6X INCREASED
+    if False:
+        for filter_id, filter_center in FILTER_CENTERS.items():
+            if lambda1 == filter_center:
+                filtername1 = filter_id
+            if lambda2 == filter_center:
+                filtername2 = filter_id
+
+        rj1 = simulate_codex_filter(
+            filter_name=filtername1, T_e=Ts[0], verbose=False, **kwargs
+        ) / simulate_codex_filter(
+            filter_name=filtername2, T_e=Ts[0], verbose=False, **kwargs
+        )
+        rj2 = simulate_codex_filter(
+            filter_name=filtername1, T_e=Ts[-1], verbose=False, **kwargs
+        ) / simulate_codex_filter(
+            filter_name=filtername2, T_e=Ts[-1], verbose=False, **kwargs
+        )
+
+        Rs = np.array(Rs)
+        Ts = np.array(Ts)
+        rescaled_rs = (Rs - np.min(Rs)) / (np.max(Rs) - np.min(Rs)) * (rj2 - rj1) + rj1
+
+        if False:  # show rescaling difference
+            fig, ax = plt.subplots()
+            ax.plot(Ts, Rs, "r+", label="original")
+            ax.plot(Ts, rescaled_rs, "b+", label="rescaled")
+            ax.plot([Ts[0], Ts[-1]], [rj1, rj2], label="two points")
+            ax.legend()
+            plt.show()
+
+        Rs = rescaled_rs
 
     Rs, Ts = zip(*sorted(zip(Rs, Ts)))  # without this cubicspline doesnt work
 
