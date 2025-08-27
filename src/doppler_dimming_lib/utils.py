@@ -120,7 +120,7 @@ def get_sun_center_from_map(map):
         map (sunpy.map.Map): map containing the image and reference frame
 
     Returns:
-        list: coordinate x and y
+        list: coordinate (x, y)
     """
     coord = SkyCoord(0 * u.arcsec, 0 * u.arcsec, frame=map.coordinate_frame)
 

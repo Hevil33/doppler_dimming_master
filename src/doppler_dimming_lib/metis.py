@@ -3,11 +3,12 @@ import sys
 import astropy.units as u
 import matplotlib.pyplot as plt
 import numpy as np
-import sunpy.map
+import sunpy
 import tqdm
 from astropy.coordinates import SkyCoord
 from astropy.io import fits
 from scipy.io import readsav
+from sunpy.map import Map
 
 from doppler_dimming_lib.utils import (
     T_e_analytical,
@@ -128,8 +129,8 @@ def get_3d_param(
         float: electron density at set location
     """
 
-    y_center, x_center = sun_center_pos
-    pixel_y, pixel_x = pixel_pos
+    y_center, x_center = sun_center_pos  # float
+    pixel_y, pixel_x = pixel_pos  # integer
     x_pix = pixel_x - x_center
     y_pix = pixel_y - y_center
     # x_pix += 0.5
@@ -270,7 +271,11 @@ def datacube_from_map(ne_map, coefficients):
 
     # datacube center coordinate (xy defined by map, z half by default)
     x_center, y_center = get_sun_center_from_map(ne_map)
-    z_center = side_pix / 2
+    z_center = side_pix / 2  # + 0.5
+
+    # print(x_center, y_center, z_center)
+    # print(side_pix)
+    # sys.exit()
 
     for z_pix in tqdm.tqdm(range(side_pix), desc="Filling density datacube"):
         for y_pix in range(side_pix):
@@ -283,9 +288,9 @@ def datacube_from_map(ne_map, coefficients):
                     "Ne",
                     pix_to_rsun,
                     coefficients,
-                    pixel_pos=[y_pix + 0.5, x_pix + 0.5],
-                    sun_center_pos=[y_center + 0.5, x_center + 0.5],
-                    z_pix=z_pix - z_center + 0.5,
+                    pixel_pos=[y_pix, x_pix],
+                    sun_center_pos=[y_center, x_center],
+                    z_pix=z_pix - z_center,
                 )
 
     # coordinates in rsun/
@@ -307,6 +312,7 @@ def datacube_from_map(ne_map, coefficients):
     ys = np.linspace(ystart_rsun, ystart_rsun + side_rsun, side_pix)
     zs = np.linspace(zstart_rsun, zstart_rsun + side_rsun, side_pix)
 
+    # measured at start of pixel, so -0.5
     coordinates = np.empty(shape=(3, len(zs), len(ys), len(xs)))
     for zi, z_rsun in enumerate(zs):
         for yi, y_rsun in enumerate(ys):
@@ -332,8 +338,9 @@ def datacube_from_map(ne_map, coefficients):
         + coordinates[1] * coordinates[1]
         + coordinates[2] * coordinates[2]
     )
-    occulter_rsun = ne_map.meta["INN_FOV"] * 3600 / ne_map.meta["RSUN_ARC"]
-    dc[r_dc < 1.0 * occulter_rsun] = 0
+    if False:  # mask occulter
+        occulter_rsun = ne_map.meta["INN_FOV"] * 3600 / ne_map.meta["RSUN_ARC"]
+        dc[r_dc < 1.0 * occulter_rsun] = 0
 
     """
     x, y = 0, 0
@@ -430,8 +437,18 @@ def datacube_from_map(ne_map, coefficients):
     return dc, coordinates
 
 
-def datacube_from_file(filename, size_in_pixel):
+def get_ne_map(filename):
+    with fits.open(filename) as file:
+        ne_header = file[0].header
+        ne_data = file[0].data
+        ne_polar_data = file[1].data
+        ne_coeffs_data = file[2].data
 
+    ne_map = sunpy.map.Map(ne_data, ne_header)
+    return ne_map
+
+
+def datacube_from_file(filename, size_in_pixel):
     with fits.open(filename) as file:
         ne_header = file[0].header
         ne_data = file[0].data
@@ -456,6 +473,8 @@ def datacube_from_file(filename, size_in_pixel):
         ax.plot(ne_map.meta["CRPIX1"], ne_map.meta["CRPIX2"], "r+", label="crpix")
         ax.legend()
 
+        print("center with function: ", pixels)
+        print("crpix: ", ne_map.meta["CRPIX1"], ne_map.meta["CRPIX2"])
         plt.show()
 
     # not needed

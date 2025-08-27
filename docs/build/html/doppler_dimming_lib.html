@@ -53,6 +53,7 @@
 <li><a class="reference internal" href="#doppler_dimming_lib.codex.get_T_W_from_codex"><code class="docutils literal notranslate"><span class="pre">get_T_W_from_codex()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.codex.get_T_from_R"><code class="docutils literal notranslate"><span class="pre">get_T_from_R()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.codex.set_codex_transmittancies"><code class="docutils literal notranslate"><span class="pre">set_codex_transmittancies()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.codex.simulate_codex_filter"><code class="docutils literal notranslate"><span class="pre">simulate_codex_filter()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.codex.simulate_codex_measure"><code class="docutils literal notranslate"><span class="pre">simulate_codex_measure()</span></code></a></li>
 </ul>
 </li>
@@ -73,6 +74,7 @@
 <li><a class="reference internal" href="#doppler_dimming_lib.metis.datacube_from_map"><code class="docutils literal notranslate"><span class="pre">datacube_from_map()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.metis.geom_factor_function"><code class="docutils literal notranslate"><span class="pre">geom_factor_function()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.metis.get_3d_param"><code class="docutils literal notranslate"><span class="pre">get_3d_param()</span></code></a></li>
+<li><a class="reference internal" href="#doppler_dimming_lib.metis.get_ne_map"><code class="docutils literal notranslate"><span class="pre">get_ne_map()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.metis.get_pix_to_rsun"><code class="docutils literal notranslate"><span class="pre">get_pix_to_rsun()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.metis.read_sav_model"><code class="docutils literal notranslate"><span class="pre">read_sav_model()</span></code></a></li>
 <li><a class="reference internal" href="#doppler_dimming_lib.metis.resample_data"><code class="docutils literal notranslate"><span class="pre">resample_data()</span></code></a></li>
@@ -222,6 +224,22 @@ min_transmittancy (float, optional): minimum transmittancy to consider, lower on
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.codex.simulate_codex_filter">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">simulate_codex_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_e:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_e_function=&lt;function</span> <span class="pre">N_e_analytical&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.codex.simulate_codex_filter" title="Link to this definition"></a></dt>
+<dd><p>Simulate the measurement from a CODEX filter by convolving its response with Cram, 1976 integral</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filter_name (str): filter name, can be “T1”, “S1”, “T2” or “S2”
+rho (float): heliocentric distance in solar radii
+T_e (float): electron temperature in Kelvin
+wind_speed (float): wind speed in km/s
+N_e_function (callable, optional): electron density as a function of the heliocentric distance (in rsun). Defaults to utils.N_e_analytical.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: value measured with selected filter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="doppler_dimming_lib.codex.simulate_codex_measure">
 <span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.codex.</span></span><span class="sig-name descname"><span class="pre">simulate_codex_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_e:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_e_function=&lt;function</span> <span class="pre">N_e_analytical&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#doppler_dimming_lib.codex.simulate_codex_measure" title="Link to this definition"></a></dt>
 <dd><p>Simulate the measurement from the four CODEX filters by convolving their response with Cram, 1976 integral</p>
@@ -271,7 +289,18 @@ verbose (bool, optional): print additional info at each step for debugging purpo
 <dl class="py function">
 <dt class="sig sig-object py" id="doppler_dimming_lib.integrals.I_s_lambda">
 <span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.integrals.</span></span><span class="sig-name descname"><span class="pre">I_s_lambda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.integrals.I_s_lambda" title="Link to this definition"></a></dt>
-<dd><p>Wrapper for integrated_I_s used to compute total brightness by passing component=3 to integrated_I_s.</p>
+<dd><p>Wrapper for integrated_I_s used to compute total brightness by passing component=3 to integrated_I_s.
+Args:</p>
+<blockquote>
+<div><p>rho (float): heliocentric distance in solar radii
+_lambda (float): wavelenght in angstrom
+T_e (float): electron temperature
+W (float): wind speed in km/s
+min_x (float, optional): integration limit for LOS away from observer in solar radii. Defaults to 10.
+max_x (float, optional): integration limit for LOS towards observer in solar radii. Defaults to 10.
+N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance. Defaults to utils.N_e_analytical.
+verbose (bool, optional): print additional info at each step. Defaults to True.</p>
+</div></blockquote>
 <dl class="simple">
 <dt>Returns:</dt><dd><p>float: integrated total brightness</p>
 </dd>
@@ -280,7 +309,7 @@ verbose (bool, optional): print additional info at each step for debugging purpo
 
 <dl class="py function">
 <dt class="sig sig-object py" id="doppler_dimming_lib.integrals.integrated_I_s">
-<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.integrals.</span></span><span class="sig-name descname"><span class="pre">integrated_I_s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lambda:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_e:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_x:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_x:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_e_function=&lt;function</span> <span class="pre">N_e_analytical&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.integrals.integrated_I_s" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.integrals.</span></span><span class="sig-name descname"><span class="pre">integrated_I_s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rho:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_lambda:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T_e:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wind_speed:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">component:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_x:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_x:</span> <span class="pre">float</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N_e_function=&lt;function</span> <span class="pre">N_e_analytical&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.integrals.integrated_I_s" title="Link to this definition"></a></dt>
 <dd><p>Integrate thomson scattering over photospheric wavelenghts, solar disc dimension and line of sight (main integral from Cram 1976.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>rho (float): heliocentric distance in solar radii
@@ -290,10 +319,10 @@ W (float): wind speed in km/s
 component (int): polarized component to compute. With respect to solar limb, 0 is radial, 1 is tangent and 3 is the sum (total brightness)
 min_x (float, optional): integration limit for LOS away from observer in solar radii. Defaults to 10.
 max_x (float, optional): integration limit for LOS towards observer in solar radii. Defaults to 10.
-N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance. Defaults to utils.N_e_analytical.
+N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance, in cm-3. Defaults to utils.N_e_analytical.
 verbose (bool, optional): print additional info at each step. Defaults to True.</p>
 </dd>
-<dt>Returns:</dt><dd><p>float: integrated emission</p>
+<dt>Returns:</dt><dd><p>float: integrated emission in erg cm-2 A-1 s-1 sr-1</p>
 </dd>
 </dl>
 </dd></dl>
@@ -354,8 +383,13 @@ x_los (float): distance in pixels along the line of sight at which to calculate 
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="doppler_dimming_lib.metis.get_ne_map">
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">get_ne_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.metis.get_ne_map" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="doppler_dimming_lib.metis.get_pix_to_rsun">
-<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">get_pix_to_rsun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_map:</span> <span class="pre">&lt;sunpy.map.map_factory.MapFactory</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f7c5e390950&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.metis.get_pix_to_rsun" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.metis.</span></span><span class="sig-name descname"><span class="pre">get_pix_to_rsun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_map:</span> <span class="pre">&lt;sunpy.map.map_factory.MapFactory</span> <span class="pre">object</span> <span class="pre">at</span> <span class="pre">0x7f929fc5b8f0&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#doppler_dimming_lib.metis.get_pix_to_rsun" title="Link to this definition"></a></dt>
 <dd><p>Returns the platescale in pixel/Rsun</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>input_map (sunpy.map.Map): map for which to calculate the ratio</p>
@@ -422,7 +456,7 @@ N_e_function (callable): density as a function of heliocentric distance (in sr).
 <dl class="simple">
 <dt>Args:</dt><dd><p>map (sunpy.map.Map): map containing the image and reference frame</p>
 </dd>
-<dt>Returns:</dt><dd><p>list: coordinate x and y</p>
+<dt>Returns:</dt><dd><p>list: coordinate (x, y)</p>
 </dd>
 </dl>
 </dd></dl>

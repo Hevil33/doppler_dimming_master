@@ -90,7 +90,15 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="doppler_dimming_lib.c_libraries.c_lib.get_c_library">
 <span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.c_libraries.c_lib.</span></span><span class="sig-name descname"><span class="pre">get_c_library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/herve/dottorato/doppler_dimming/programs/doppler_dimming_master/src/doppler_dimming_lib/c_libraries/./integrands_lib.so'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.c_libraries.c_lib.get_c_library" title="Link to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Sets up the c_library object which is used by the library.
+This object contains C integrand functions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>path (str, optional): path to shared compiled library. Defaults to os.path.join(os.path.dirname(__file__), “./integrands_lib.so”).</p>
+</dd>
+<dt>Returns:</dt><dd><p>ctypes.CDLL: CDLL library containing integrand functions.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="doppler-dimming-lib-c-libraries-integrands-lib-module">

@@ -106,6 +106,7 @@ def get_spectrum_from_txt(precision_level: int = 0) -> np.ndarray:
         )
         wl_unit = u.nm
         I_unit = u.W / (u.m * u.m * u.nm)
+
     erg_s_cm2_A_sr = u.erg / (u.s * u.cm * u.cm * u.Angstrom * u.sr)
     # sun_solid_angle = 6.794e-5  # steradians
     earth_distance_SR = const.au / const.R_sun  # 215.03

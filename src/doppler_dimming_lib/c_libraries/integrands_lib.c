@@ -1,3 +1,10 @@
+/*
+
+C libraries used within scipy to speed up computations.
+This file contains integrand functions that are loaded in a CDLL object and translated from C to Python.
+
+*/
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -65,6 +72,11 @@ double int_x(double a, double b)
 
 double N_e_from_function(double r)
 {
+    /*
+    Analytical electron density function.
+    r is the heliocentric distance in solar radii, returns the density in cm-3.
+    */
+
     // return 1.67 * pow(10, 4 + 4.04 / r);
 
     return 1.0e8 * (0.036 * pow(r, -1.5) + 1.55 * pow(r, -6) + 2.99 * pow(r, -16)); // Baumbach 1937, cm-3
@@ -74,6 +86,10 @@ double N_e_from_function(double r)
     return 2.6e-3 * exp(5.5986 * z + 5.4155 * z2) * z2 * (1. + 0.82902 * z - 5.6654 * z2 + 3.9784 * z2 * z); // Guhathakurta 2006, cm-3
 }
 
+/*
+Compute wavelenght-dependent limb-darkening coefficient (Cram, 1976).
+    lambda: wavelength in cm.
+*/
 double q_lambda(double lambda)
 {
     double lambda_angstrom = lambda * CM_TO_A;
@@ -88,6 +104,12 @@ double q_lambda(double lambda)
     }
 }
 
+/*
+Get limb darkening corrected photospheric emission (Cram, 1976).
+    mu: cos(theta), where theta is the heliocentric angle
+    lambda: the wavelenght in nm
+    F_lambda: wavelenght-dependent photospheric emission.
+*/
 double I_lambda_mu(double mu, double lambda, double F_lambda)
 {
     double q = q_lambda(lambda);
@@ -104,6 +126,15 @@ double I_lambda_mu(double mu, double lambda, double F_lambda)
 #define API
 #endif
 
+/*
+Structure containing input data from python.
+    n_points: number of tabulated spectra points
+    c_wls: wavelenghts
+    c_Flambdas: photospheric emissions
+    los_n_points: number of points along LOS
+    los_positions: coordinates along LOS
+    los_densities: densities along LOS
+*/
 struct input_data_struct
 {
     int n_points;
@@ -114,6 +145,17 @@ struct input_data_struct
     double *los_densities;
 };
 
+/*
+Integrand over lambda from the main integrated emission of Cram, 1976.
+The integration over lambda is carried over tabulated data, and therefore computed in C to speed up computations using trapezoid rule.
+    lambda: wavelenght in cm
+    cos_omega: cosine of altitude joining scattering point to source point
+    wind_speed: wind speed in cm s-1
+    T_corona: electron temperature in Kelvin
+    b: cos(gamma) where gamma is half of the supplement of the scattering angle
+    mu: cos(theta), where theta is the heliocentric angle
+    input_data_struct: structure containing input data
+*/
 double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed, double T_corona, double b, double mu, struct input_data_struct table)
 {
     /*THIS INTEGRAL IS DONE IN CM*/
@@ -208,6 +250,12 @@ double dlambda_prime_integral(double lambda, double cos_omega, double wind_speed
     return I_lambda_sum;
 };
 
+/*
+Main integrand from Cram, 1976.
+    n: number of variables to integrate, 2 in this case. Phi and omega are performed by scipy, while lambda is calculated in C with trapezoid rule.
+    xx: integration variables
+    userdata: other user data (struct containing tabulated data)
+*/
 double I_dlambda_domega(int n, double *xx, void *userdata)
 {
     double phi = xx[0];
@@ -298,11 +346,23 @@ double I_dlambda_domega(int n, double *xx, void *userdata)
     }
 }
 
+/*
+Obtain geometric component along radial plane from the Sun center (Cram, 1976). alpha is the angle between the scattering plane and the radial plane.
+    cos_alpha: cosine of alpha
+    sin_alpha: sine of alpha
+    cos_Theta: cosine of the scattering angle Theta
+*/
 double Q_R(double cos_alpha, double sin_alpha, double cos_Theta)
 {
     return cos_alpha * cos_alpha * cos_Theta * cos_Theta + sin_alpha * sin_alpha;
 }
 
+/*
+Obtain geometric component orthogonal to radial plane from the Sun center (Cram, 1976). alpha is the angle between the scattering plane and the radial plane.
+    cos_alpha: cosine of alpha
+    sin_alpha: sine of alpha
+    cos_Theta: cosine of the scattering angle Theta
+*/
 double Q_T(double cos_alpha, double sin_alpha, double cos_Theta)
 {
     return cos_alpha * cos_alpha + sin_alpha * sin_alpha * cos_Theta * cos_Theta;

@@ -266,7 +266,7 @@ from doppler_dimming_lib.utils import timeit
 
 
 # @functools.lru_cache
-@functools.cache
+# @functools.cache # doesnt work cause of unhashable arguments
 def get_R_as_spline(integral_function, lambda1: float, lambda2: float, **kwargs):
     """Find the cubic spline interpolator of the ratio function(T1)/function(T2). All the parameters of function must be provided as kwargs.
 

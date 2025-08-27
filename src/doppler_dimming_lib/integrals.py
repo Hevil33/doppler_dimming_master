@@ -42,6 +42,15 @@ class args_struct(ctypes.Structure):
 def _get_user_data_ptr(
     los_positions=np.zeros(shape=1), los_densities=np.zeros(shape=1)
 ):
+    """Get pointer to data used by C integrands.
+
+    Args:
+        los_positions (_type_, optional): _description_. Defaults to np.zeros(shape=1).
+        los_densities (_type_, optional): _description_. Defaults to np.zeros(shape=1).
+
+    Returns:
+        ctypes.c_void_p: user data pointer
+    """
     wls, Fls = spectrum_config.COMPLETE_SPECTRUM
     los_positions = np.ascontiguousarray(los_positions, dtype=np.double)
     los_densities = np.ascontiguousarray(los_densities, dtype=np.double)
@@ -150,6 +159,15 @@ def I_dl_domega_dphi(
 
 def I_s_lambda(*args, **kwargs) -> float:
     """Wrapper for integrated_I_s used to compute total brightness by passing component=3 to integrated_I_s.
+    Args:
+        rho (float): heliocentric distance in solar radii
+        _lambda (float): wavelenght in angstrom
+        T_e (float): electron temperature
+        W (float): wind speed in km/s
+        min_x (float, optional): integration limit for LOS away from observer in solar radii. Defaults to 10.
+        max_x (float, optional): integration limit for LOS towards observer in solar radii. Defaults to 10.
+        N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance. Defaults to utils.N_e_analytical.
+        verbose (bool, optional): print additional info at each step. Defaults to True.
 
     Returns:
         float: integrated total brightness
@@ -179,11 +197,11 @@ def integrated_I_s(
         component (int): polarized component to compute. With respect to solar limb, 0 is radial, 1 is tangent and 3 is the sum (total brightness)
         min_x (float, optional): integration limit for LOS away from observer in solar radii. Defaults to 10.
         max_x (float, optional): integration limit for LOS towards observer in solar radii. Defaults to 10.
-        N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance. Defaults to utils.N_e_analytical.
+        N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance, in cm-3. Defaults to utils.N_e_analytical.
         verbose (bool, optional): print additional info at each step. Defaults to True.
 
     Returns:
-        float: integrated emission
+        float: integrated emission in erg cm-2 A-1 s-1 sr-1
     """
     # ----------
     # Tweakables, omega is dependent on x
@@ -192,6 +210,7 @@ def integrated_I_s(
     max_chebyshev_order = 5
     # ----------
 
+    # TODO: change integration limit to function of heliocentric distance to keep accuracy under control
     if min_x is None:
         min_x = 10.0
         # min_x = rho**3
