@@ -1,0 +1,51 @@
+Metadata-Version: 2.4
+Name: doppler_dimming_lib
+Version: 1.0.0
+Summary: Library for the CODEX-METIS thomson scattering electron temperature diagnostic
+Author-email: Haudemand Hervé <herve.haudemand@inaf.it>
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: astropy
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Requires-Dist: sunpy
+Requires-Dist: tqdm
+Requires-Dist: openpyxl
+Dynamic: license-file
+
+# Installation 
+
+Copy the repository locally 
+
+`git clone https://github.com/Hevil33/doppler_dimming_master`
+
+Go into the downloaded folder and install the library with pip
+
+`cd doppler_dimming_master`
+`pip install .`
+
+
+C files need to be compiled for this module to work.
+Go into the installation folder (usually pythonX.X/site-packages) and run the script
+
+`./compile.sh`
+
+This script contains the command to compile the libraries which is
+
+`gcc -lm -shared -fPIC -o integrands_lib.so integrands_lib.c`
+
+gcc is used by default. 
+If you don't have gcc, any other C compiler will work as long as `integrands_lib.so` is correctly produced in the same folder. 
+
+## Test
+
+Warnings may appear, to check if the library was installed correctly run the test inside the tests folder. From the downloaded repository use your python version X.X 
+
+`pythonX.X test.py`
+
