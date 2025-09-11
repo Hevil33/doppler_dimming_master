@@ -1,0 +1,2 @@
+- come vengono i rapporti usando la pb? meglio o peggio? (magari guadagno ma 30% di 5% e aumenta l'errore)
+- inserire calcolo pb anche nella inversione

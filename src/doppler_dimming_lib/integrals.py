@@ -194,7 +194,7 @@ def integrated_I_s(
         _lambda (float): wavelenght in angstrom
         T_e (float): electron temperature
         W (float): wind speed in km/s
-        component (int): polarized component to compute. With respect to solar limb, 0 is radial, 1 is tangent and 3 is the sum (total brightness)
+        component (int): polarized component to compute. With respect to solar limb, 0 is radial, 1 is tangent, 2 is pb (=tangent-radial, Cram 1976) and 3 is the sum (total brightness)
         min_x (float, optional): integration limit for LOS away from observer in solar radii. Defaults to 10.
         max_x (float, optional): integration limit for LOS towards observer in solar radii. Defaults to 10.
         N_e_function (callable, optional): function used to calculate the electron density as a function of heliocentric distance, in cm-3. Defaults to utils.N_e_analytical.
@@ -210,6 +210,17 @@ def integrated_I_s(
     max_chebyshev_order = 5
     # ----------
 
+    # sanity check on rho (can't be a solar radius or less)
+    if rho <= 1.0:
+        # print(f"ERROR: can't integrate rho <= 1 ({rho} provided)")
+        warning(f"Integral undefined for rho <= 1 Rsun ({rho} Rsun). Defaulting to 0.")
+        return 0
+
+    available_components = [0, 1, 2, 3]
+    assert (
+        component in available_components
+    ), f"ERROR: invalid component selected ({available_components} allowed)."
+
     # TODO: change integration limit to function of heliocentric distance to keep accuracy under control
     if min_x is None:
         min_x = 10.0
@@ -219,12 +230,6 @@ def integrated_I_s(
         max_x = 10.0
         # max_x = rho**3
         max_x = np.inf
-
-    # sanity check on rho (can't be a solar radius or less)
-    if rho <= 1:
-        # print(f"ERROR: can't integrate rho <= 1 ({rho} provided)")
-        warning(f"Integral undefined for rho <= 1 Rsun ({rho} Rsun). Defaulting to 0.")
-        return 0
 
     if verbose:
         print(f"\nCalculating I_s_lambda...")

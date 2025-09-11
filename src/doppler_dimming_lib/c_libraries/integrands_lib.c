@@ -336,13 +336,17 @@ double I_dlambda_domega(int n, double *xx, void *userdata)
     {
         return Q_normalization * Q_T(cos_alpha, sin_alpha, cos_Theta) * I_lambda;
     }
+    else if (component == 2)
+    {
+        return Q_normalization * (Q_T(cos_alpha, sin_alpha, cos_Theta) - Q_R(cos_alpha, sin_alpha, cos_Theta)) * I_lambda;
+    }
     else if (component == 3)
     {
         return Q_normalization * (Q_R(cos_alpha, sin_alpha, cos_Theta) + Q_T(cos_alpha, sin_alpha, cos_Theta)) * I_lambda; // original
     }
     else
     {
-        printf("ERROR: invalid component (0, 1 allowed.)\n");
+        printf("ERROR: invalid component (0, 1, 2, 3 allowed.)\n");
     }
 }
 
