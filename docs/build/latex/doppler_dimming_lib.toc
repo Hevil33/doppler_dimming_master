@@ -1,2 +1,27 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Indices and tables}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}doppler\_dimming\_lib package}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Subpackages}{1}{subsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1.1}doppler\_dimming\_lib.c\_libraries package}{1}{subsubsection.1.1.1.1}%
+\contentsline {paragraph}{\numberline {1.1.1.1.1}Submodules}{1}{paragraph.1.1.1.1.1}%
+\contentsline {paragraph}{\numberline {1.1.1.1.2}doppler\_dimming\_lib.c\_libraries.c\_lib module}{1}{paragraph.1.1.1.1.2}%
+\contentsline {paragraph}{\numberline {1.1.1.1.3}doppler\_dimming\_lib.c\_libraries.integrands\_lib module}{1}{paragraph.1.1.1.1.3}%
+\contentsline {paragraph}{\numberline {1.1.1.1.4}Module contents}{1}{paragraph.1.1.1.1.4}%
+\contentsline {subsubsection}{\numberline {1.1.1.2}doppler\_dimming\_lib.data package}{1}{subsubsection.1.1.1.2}%
+\contentsline {paragraph}{\numberline {1.1.1.2.1}Module contents}{1}{paragraph.1.1.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.1.1.3}doppler\_dimming\_lib.spectra package}{2}{subsubsection.1.1.1.3}%
+\contentsline {paragraph}{\numberline {1.1.1.3.1}Submodules}{2}{paragraph.1.1.1.3.1}%
+\contentsline {paragraph}{\numberline {1.1.1.3.2}doppler\_dimming\_lib.spectra.spectra module}{2}{paragraph.1.1.1.3.2}%
+\contentsline {paragraph}{\numberline {1.1.1.3.3}Module contents}{2}{paragraph.1.1.1.3.3}%
+\contentsline {subsection}{\numberline {1.1.2}Submodules}{2}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}doppler\_dimming\_lib.codex module}{2}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}doppler\_dimming\_lib.datacubes module}{5}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}doppler\_dimming\_lib.integrals module}{5}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.1.6}doppler\_dimming\_lib.inversion module}{6}{subsection.1.1.6}%
+\contentsline {subsection}{\numberline {1.1.7}doppler\_dimming\_lib.metis module}{7}{subsection.1.1.7}%
+\contentsline {subsection}{\numberline {1.1.8}doppler\_dimming\_lib.parallelization module}{9}{subsection.1.1.8}%
+\contentsline {subsection}{\numberline {1.1.9}doppler\_dimming\_lib.utils module}{9}{subsection.1.1.9}%
+\contentsline {subsection}{\numberline {1.1.10}Module contents}{10}{subsection.1.1.10}%
+\contentsline {chapter}{\numberline {2}Indices and tables}{11}{chapter.2}%
+\contentsline {chapter}{Python Module Index}{13}{section*.42}%
+\contentsline {chapter}{Index}{15}{section*.43}%

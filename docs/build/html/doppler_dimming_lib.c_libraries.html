@@ -20,7 +20,9 @@
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="doppler_dimming_lib.data package" href="doppler_dimming_lib.data.html" />
+    <link rel="prev" title="doppler_dimming_lib package" href="doppler_dimming_lib.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,20 +44,34 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">doppler_dimming_lib.c_libraries package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-doppler_dimming_lib.c_libraries.c_lib">doppler_dimming_lib.c_libraries.c_lib module</a><ul>
-<li><a class="reference internal" href="#doppler_dimming_lib.c_libraries.c_lib.get_c_library"><code class="docutils literal notranslate"><span class="pre">get_c_library()</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="doppler_dimming_lib.html">doppler_dimming_lib package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="doppler_dimming_lib.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">doppler_dimming_lib.c_libraries package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-doppler_dimming_lib.c_libraries.c_lib">doppler_dimming_lib.c_libraries.c_lib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#doppler-dimming-lib-c-libraries-integrands-lib-module">doppler_dimming_lib.c_libraries.integrands_lib module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-doppler_dimming_lib.c_libraries">Module contents</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#doppler-dimming-lib-c-libraries-integrands-lib-module">doppler_dimming_lib.c_libraries.integrands_lib module</a></li>
-<li><a class="reference internal" href="#module-doppler_dimming_lib.c_libraries">Module contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doppler_dimming_lib.data.html">doppler_dimming_lib.data package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="doppler_dimming_lib.spectra.html">doppler_dimming_lib.spectra package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib.codex">doppler_dimming_lib.codex module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib.datacubes">doppler_dimming_lib.datacubes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib.integrals">doppler_dimming_lib.integrals module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib.inversion">doppler_dimming_lib.inversion module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib.metis">doppler_dimming_lib.metis module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib.parallelization">doppler_dimming_lib.parallelization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib.utils">doppler_dimming_lib.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="doppler_dimming_lib.html#module-doppler_dimming_lib">Module contents</a></li>
 </ul>
 </li>
 </ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -70,6 +86,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="doppler_dimming_lib.html">doppler_dimming_lib package</a></li>
       <li class="breadcrumb-item active">doppler_dimming_lib.c_libraries package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/doppler_dimming_lib.c_libraries.rst.txt" rel="nofollow"> View page source</a>
@@ -89,13 +106,18 @@
 <span id="doppler-dimming-lib-c-libraries-c-lib-module"></span><h2>doppler_dimming_lib.c_libraries.c_lib module<a class="headerlink" href="#module-doppler_dimming_lib.c_libraries.c_lib" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="doppler_dimming_lib.c_libraries.c_lib.get_c_library">
-<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.c_libraries.c_lib.</span></span><span class="sig-name descname"><span class="pre">get_c_library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'/home/herve/dottorato/doppler_dimming/programs/doppler_dimming_master/src/doppler_dimming_lib/c_libraries/./integrands_lib.so'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.c_libraries.c_lib.get_c_library" title="Link to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">doppler_dimming_lib.c_libraries.c_lib.</span></span><span class="sig-name descname"><span class="pre">get_c_library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doppler_dimming_lib.c_libraries.c_lib.get_c_library" title="Link to this definition"></a></dt>
 <dd><p>Sets up the c_library object which is used by the library.
 This object contains C integrand functions.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>path (str, optional): path to shared compiled library. Defaults to os.path.join(os.path.dirname(__file__), “./integrands_lib.so”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em>, </em><em>optional</em>) – path to shared compiled library. If None, __file__+./integrands_lib.so is used. Defaults to None.</p>
 </dd>
-<dt>Returns:</dt><dd><p>ctypes.CDLL: CDLL library containing integrand functions.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>CDLL library containing integrand functions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ctypes.CDLL</p>
 </dd>
 </dl>
 </dd></dl>
@@ -112,7 +134,10 @@ This object contains C integrand functions.</p>
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="doppler_dimming_lib.html" class="btn btn-neutral float-left" title="doppler_dimming_lib package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="doppler_dimming_lib.data.html" class="btn btn-neutral float-right" title="doppler_dimming_lib.data package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

@@ -1,7 +1,6 @@
 # import matplotlib.pyplot as plt
 # import micropolarray as ml
-
-
+import multiprocessing as mp
 import sys
 
 # doppler_dimming_lib.set_spectrum_level(0)
@@ -9,6 +8,7 @@ import numpy as np
 from numpy import linalg
 
 sys.path.append("./src/")
+
 import doppler_dimming_lib as db
 
 
@@ -32,6 +32,46 @@ def test_simple_algorithm(rho, _lambda, T_e, W):
     print("Working test ended successfully")
 
 
+@db.utils.timeit
+def test_inversion():
+
+    codex_images = db.simulate_codex_images(
+        image_side, wind_pos, metis_ne_filename, T_e_pos
+    )
+
+    inferred_Ts = db.inversion.invert_temperature_batch(
+        codex_images,
+        r_pos,
+        wind_speed,
+        densities_dc,
+        r_dc,
+        pid=0,
+    )
+
+
+@db.utils.timeit
+def test_parallelized_inversion():
+    tot_nprocs = 13
+
+    def test_func_to_parallelize(): ...
+
+    args = []
+
+    print(f"Starting parallel calculation, {tot_nprocs=}")
+    with mp.Pool(processes=tot_nprocs) as p:
+        result = p.starmap(
+            test_func_to_parallelize,
+            args,
+        )
+
+    merged_result = merge_2d_batched_array(result)
+    assert np.array_equal(sample_array, merged_result)
+
+    # info(f"Parallel computation ended in: {end - start} s")
+    print(f"Parallel computation is correct")
+
+
 if __name__ == "__main__":
 
     test_simple_algorithm(rho=2, _lambda=3700, T_e=1.0e6, W=250)
+    test_parallelized_inversion()

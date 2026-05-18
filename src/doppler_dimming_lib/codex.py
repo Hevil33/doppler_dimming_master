@@ -1,7 +1,13 @@
-import functools
+"""
+Codex images functions: transmissivity setting, filter response convolution, ratio inversion
+"""
+
 import json
+import multiprocessing as mp
 import os
 import sys
+import time
+from datetime import timedelta
 from functools import lru_cache
 from logging import error, info
 
@@ -11,9 +17,14 @@ import pandas as pd
 from scipy import optimize
 from scipy.integrate import cumulative_trapezoid
 from scipy.interpolate import CubicSpline
+from tqdm import tqdm
 
 from doppler_dimming_lib.integrals import I_s_lambda
 from doppler_dimming_lib.utils import N_e_analytical
+from doppler_dimming_lib.utils import timeit
+
+
+from .parallelization import batch_2d_array, batch_3d_array, merge_2d_batched_array
 
 
 def set_codex_transmittancies(
@@ -142,14 +153,14 @@ def simulate_codex_filter(
     """Simulate the measurement from a CODEX filter by convolving its response with Cram, 1976 integral
 
     Args:
-        filter_name (str): filter name, can be "T1", "S1", "T2" or "S2"
+        filter_name (str): filter name, can be T1, S1, T2 or S2
         rho (float): heliocentric distance in solar radii
         T_e (float): electron temperature in Kelvin
         wind_speed (float): wind speed in km/s
         N_e_function (callable, optional): electron density as a function of the heliocentric distance (in rsun). Defaults to utils.N_e_analytical.
 
     Returns:
-        float: value measured with selected filter
+        float: value measured with selected filter in erg cm-2 s-1 sr-1
     """
 
     def J_s_lambda(_lambda):
@@ -187,7 +198,7 @@ def simulate_codex_measure(
         N_e_function (callable, optional): electron density as a function of the heliocentric distance (in rsun). Defaults to utils.N_e_analytical.
 
     Returns:
-        np.ndarray(4): filters measured values, ordered by filter wavelength (T1=393, S1=398, T2=405, S2=423)
+        np.ndarray(4): filters measured values, ordered by filter wavelength (T1=393, S1=398, T2=405, S2=423), in erg cm-2 s-1 sr-1
     """
 
     Js = np.array(
@@ -260,9 +271,6 @@ def get_T_W_from_codex(rho: float, Js: list, p0: list) -> list:
         )
 
         return params
-
-
-from doppler_dimming_lib.utils import timeit
 
 
 # @functools.lru_cache
@@ -340,13 +348,13 @@ def get_R_as_spline(integral_function, lambda1: float, lambda2: float, **kwargs)
     return pol
 
 
-def get_T_from_R(ratio: float, rho: float, **kwargs):
-    """Retrieve the electron tempearture from a CODEX measured ratio between filters. First gets R as spline for the selected rho, then gets T from the fitted spline.
+def get_T_from_R(s2_over_t2: float, rho: float, wind_speed: float = 0.0, **kwargs):
+    """Retrieve the electron tempearture from a CODEX measured ratio between filters S2 and T2. First gets R as spline for the selected rho, then gets T from the fitted spline.
 
     Args:
-        ratio (float): ratio between two filters S2/T2
+        s2_over_t2 (float): ratio between two filters S2/T2
         rho (float): heliocentric distance in solar radii
-        W (float, optional): wind speed in km/s. Defaults to 0.
+        wind_speed (float, optional): wind speed in km/s. Defaults to 0.
 
     Returns:
         uncertainties.ufloat: inferred electron temperature
@@ -355,11 +363,145 @@ def get_T_from_R(ratio: float, rho: float, **kwargs):
     lambda1 = FILTER_CENTERS["S2"]
     lambda2 = FILTER_CENTERS["T2"]
 
+    kwargs["wind_speed"] = wind_speed
     pol = get_R_as_spline(I_s_lambda, lambda1, lambda2, rho=rho, **kwargs)
     # inferred_T = get_T_from_polyfit(pol, ratio)
-    inferred_T = pol(ratio)
+    inferred_T = pol(s2_over_t2)
 
     return inferred_T
+
+
+def simulate_codex_chunk(densities, z, r_pos, T_e_pos, wind_speed_pos, pid):
+    yrange = densities.shape[1]
+    xrange = densities.shape[2]
+
+    milestones = [
+        int(yrange / 4),
+        int(yrange / 4) + 1,
+        int(yrange / 2),
+        int(yrange / 2) + 1,
+        int(3 * yrange / 4),
+        int(3 * yrange / 4) + 1,
+        int(yrange),
+        int(yrange) + 1,
+    ]
+
+    simulated_chunk_data = np.zeros(shape=(4, yrange, xrange))
+    # with tqdm(total=yrange, desc=f"Processor {pid}", position=pid, leave=True) as pbar:
+    for y in tqdm(
+        range(yrange),
+        desc=f"Processor {pid}",
+        position=pid,
+        leave=False,
+    ):
+        # for y in range(yrange):
+        # if y in milestones:
+        # print(f"Thread at {y / yrange*100:.2f} %", flush=True)
+        for x in range(xrange):
+            if r_pos[y, x] <= 1:
+                simulated_chunk_data[:, y, x] = np.array([0, 0, 0, 0])
+            else:
+                densities_los = densities[:, y, x]
+                z_los = z[:, y, x]
+                N_e_function = np.array([z_los, densities_los], dtype=np.double)
+
+                simulated_chunk_data[:, y, x] = simulate_codex_measure(
+                    rho=r_pos[y, x],
+                    T_e=T_e_pos[y, x],
+                    wind_speed=wind_speed_pos[y, x],
+                    N_e_function=N_e_function,
+                    verbose=False,
+                )
+        # pbar.update(1)
+
+    return simulated_chunk_data
+
+
+def simulate_codex_images(
+    image_side,
+    wind_speed_pos,
+    densities_dc,
+    coordinates_dc,
+    T_e_pos,
+    tot_processors=None,
+):
+    wind_speed_avg = int(np.mean(wind_speed_pos))
+    info(
+        f"Computing and saving dummy codex in parallel, {image_side=}, {wind_speed_avg=}"
+    )
+    # densities_dc, coordinates_dc = db.datacube_from_file(metis_ne_filename, image_side)
+
+    r_dc = np.sqrt(
+        coordinates_dc[0] * coordinates_dc[0]
+        + coordinates_dc[1] * coordinates_dc[1]
+        + coordinates_dc[2] * coordinates_dc[2]
+    )
+    r_pos = r_dc[int(r_dc.shape[0] / 2), :, :]
+    z = coordinates_dc[0]
+
+    if not isinstance(wind_speed_pos, np.ndarray):
+        wind_speed_pos = np.ones_like(T_e_pos) * wind_speed_pos
+
+    codex_images = np.zeros(shape=(4, image_side, image_side))
+
+    if tot_processors is None:
+        tot_processors = 4
+
+    splitted_densities = batch_3d_array(densities_dc, tot_processors)
+    splitted_z = batch_3d_array(z, tot_processors)
+
+    splitted_r_pos = batch_2d_array(r_pos, tot_processors)
+    splitted_T_e = batch_2d_array(T_e_pos, tot_processors)
+    splitted_wind_pos = batch_2d_array(wind_speed_pos, tot_processors)
+
+    processor_ids = [i + 1 for i in range(tot_processors)]
+
+    args = (
+        [
+            splitted_densities[i],
+            splitted_z[i],
+            splitted_r_pos[i],
+            splitted_T_e[i],
+            splitted_wind_pos[i],
+            processor_ids[i],
+        ]
+        for i in range(tot_processors)
+    )
+
+    info(f"Starting parallel codex data simulation, {tot_processors=}")
+    start = time.perf_counter()
+    with mp.Pool(processes=tot_processors) as p:
+        result = p.starmap(
+            simulate_codex_chunk,
+            args,
+        )
+
+    end = time.perf_counter()
+    # info(f"Parallel computation ended in: {end - start} s")
+    info(f"Parallel codex data simulation ended in: {timedelta(seconds=end-start)} ")
+
+    codex_images = np.array(
+        [
+            merge_2d_batched_array(
+                [result[proc_i][image_i] for proc_i in range(tot_processors)]
+            )
+            for image_i in range(4)
+        ]
+    )
+
+    return codex_images
+
+    # old code
+    codex_images = np.zeros(shape=(4, image_side, image_side))
+    for i in range(processors_y):
+        for j in range(processors_x):
+            codex_images[
+                :,
+                i * (chunk_size_y) : (i + 1) * chunk_size_y,
+                j * (chunk_size_x) : (j + 1) * chunk_size_x,
+            ] = result[i + processors_y * j].reshape(4, chunk_size_y, chunk_size_x)
+
+    return codex_images
 
 
 _CODEX_FILTERS_DATA_PATH = "./data/codex_filters/"

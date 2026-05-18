@@ -59,12 +59,12 @@
 \addto\captionsenglish{\renewcommand{\contentsname}{Contents:}}
 
 \usepackage{sphinxmessages}
-\setcounter{tocdepth}{1}
-
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
 
 
 \title{doppler\_dimming\_lib}
-\date{Aug 27, 2025}
+\date{May 07, 2026}
 \release{1.0}
 \author{Hervé Haudemand}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -86,6 +86,1110 @@
 
 
 
+\chapter{Introduction}
+\label{\detokenize{index:introduction}}
+\sphinxAtStartPar
+This documentation covers the doppler\_dimming\_lib library to invert the electron temperature.
+
+\sphinxstepscope
+
+
+\section{doppler\_dimming\_lib package}
+\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-package}}\label{\detokenize{doppler_dimming_lib::doc}}
+
+\subsection{Subpackages}
+\label{\detokenize{doppler_dimming_lib:subpackages}}
+\sphinxstepscope
+
+
+\subsubsection{doppler\_dimming\_lib.c\_libraries package}
+\label{\detokenize{doppler_dimming_lib.c_libraries:doppler-dimming-lib-c-libraries-package}}\label{\detokenize{doppler_dimming_lib.c_libraries::doc}}
+
+\paragraph{Submodules}
+\label{\detokenize{doppler_dimming_lib.c_libraries:submodules}}
+
+\paragraph{doppler\_dimming\_lib.c\_libraries.c\_lib module}
+\label{\detokenize{doppler_dimming_lib.c_libraries:module-doppler_dimming_lib.c_libraries.c_lib}}\label{\detokenize{doppler_dimming_lib.c_libraries:doppler-dimming-lib-c-libraries-c-lib-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.c\_libraries.c\_lib@\spxentry{doppler\_dimming\_lib.c\_libraries.c\_lib}}\index{doppler\_dimming\_lib.c\_libraries.c\_lib@\spxentry{doppler\_dimming\_lib.c\_libraries.c\_lib}!module@\spxentry{module}}\index{get\_c\_library() (in module doppler\_dimming\_lib.c\_libraries.c\_lib)@\spxentry{get\_c\_library()}\spxextra{in module doppler\_dimming\_lib.c\_libraries.c\_lib}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib.c_libraries:doppler_dimming_lib.c_libraries.c_lib.get_c_library}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.c\_libraries.c\_lib.}}\sphinxbfcode{\sphinxupquote{get\_c\_library}}}{\sphinxparam{\DUrole{n}{path}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{str}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Sets up the c\_library object which is used by the library.
+This object contains C integrand functions.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{path}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} path to shared compiled library. If None, \_\_file\_\_+./integrands\_lib.so is used. Defaults to None.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+CDLL library containing integrand functions.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+ctypes.CDLL
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\paragraph{doppler\_dimming\_lib.c\_libraries.integrands\_lib module}
+\label{\detokenize{doppler_dimming_lib.c_libraries:doppler-dimming-lib-c-libraries-integrands-lib-module}}
+
+\paragraph{Module contents}
+\label{\detokenize{doppler_dimming_lib.c_libraries:module-doppler_dimming_lib.c_libraries}}\label{\detokenize{doppler_dimming_lib.c_libraries:module-contents}}\index{module@\spxentry{module}!doppler\_dimming\_lib.c\_libraries@\spxentry{doppler\_dimming\_lib.c\_libraries}}\index{doppler\_dimming\_lib.c\_libraries@\spxentry{doppler\_dimming\_lib.c\_libraries}!module@\spxentry{module}}
+\sphinxstepscope
+
+
+\subsubsection{doppler\_dimming\_lib.data package}
+\label{\detokenize{doppler_dimming_lib.data:doppler-dimming-lib-data-package}}\label{\detokenize{doppler_dimming_lib.data::doc}}
+
+\paragraph{Module contents}
+\label{\detokenize{doppler_dimming_lib.data:module-doppler_dimming_lib.data}}\label{\detokenize{doppler_dimming_lib.data:module-contents}}\index{module@\spxentry{module}!doppler\_dimming\_lib.data@\spxentry{doppler\_dimming\_lib.data}}\index{doppler\_dimming\_lib.data@\spxentry{doppler\_dimming\_lib.data}!module@\spxentry{module}}
+\sphinxAtStartPar
+Contains data
+
+\sphinxstepscope
+
+
+\subsubsection{doppler\_dimming\_lib.spectra package}
+\label{\detokenize{doppler_dimming_lib.spectra:doppler-dimming-lib-spectra-package}}\label{\detokenize{doppler_dimming_lib.spectra::doc}}
+
+\paragraph{Submodules}
+\label{\detokenize{doppler_dimming_lib.spectra:submodules}}
+
+\paragraph{doppler\_dimming\_lib.spectra.spectra module}
+\label{\detokenize{doppler_dimming_lib.spectra:module-doppler_dimming_lib.spectra.spectra}}\label{\detokenize{doppler_dimming_lib.spectra:doppler-dimming-lib-spectra-spectra-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.spectra.spectra@\spxentry{doppler\_dimming\_lib.spectra.spectra}}\index{doppler\_dimming\_lib.spectra.spectra@\spxentry{doppler\_dimming\_lib.spectra.spectra}!module@\spxentry{module}}\index{get\_spectrum\_from\_txt() (in module doppler\_dimming\_lib.spectra.spectra)@\spxentry{get\_spectrum\_from\_txt()}\spxextra{in module doppler\_dimming\_lib.spectra.spectra}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib.spectra:doppler_dimming_lib.spectra.spectra.get_spectrum_from_txt}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.spectra.spectra.}}\sphinxbfcode{\sphinxupquote{get\_spectrum\_from\_txt}}}{\sphinxparam{\DUrole{n}{precision\_level}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{0}}}{{ $\rightarrow$ ndarray}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Returns the spectrum from txt file. Use the precision level
+to determine the sampling quality.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{precision\_level}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} : 0 to 2 increasing spectrum sampling, sparse (0, Thekaekara), medium (1, Thuillier) or dense (2, MODTRAN). Defaults to 0 for faster computations.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+spectrum wavelenghts in {[}cm{]} and irradiances in {[}erg / s cm2 sr A{]}.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+np.ndarray
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{set\_spectrum\_level() (in module doppler\_dimming\_lib.spectra.spectra)@\spxentry{set\_spectrum\_level()}\spxextra{in module doppler\_dimming\_lib.spectra.spectra}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib.spectra:doppler_dimming_lib.spectra.spectra.set_spectrum_level}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.spectra.spectra.}}\sphinxbfcode{\sphinxupquote{set\_spectrum\_level}}}{\sphinxparam{\DUrole{n}{spectrum\_level}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{0}}}{{ $\rightarrow$ c\_void\_p}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Sets the spectrum to be used by this library.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{spectrum\_level}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} spectrum to load, from sparser (0) to denser (2), see get\_spectrum\_for\_txt. Defaults to 0.
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+pointer to spectra data, to be passed to c library
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+ctypes.c\_void\_p
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\paragraph{Module contents}
+\label{\detokenize{doppler_dimming_lib.spectra:module-doppler_dimming_lib.spectra}}\label{\detokenize{doppler_dimming_lib.spectra:module-contents}}\index{module@\spxentry{module}!doppler\_dimming\_lib.spectra@\spxentry{doppler\_dimming\_lib.spectra}}\index{doppler\_dimming\_lib.spectra@\spxentry{doppler\_dimming\_lib.spectra}!module@\spxentry{module}}
+
+\subsection{Submodules}
+\label{\detokenize{doppler_dimming_lib:submodules}}
+
+\subsection{doppler\_dimming\_lib.codex module}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib.codex}}\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-codex-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.codex@\spxentry{doppler\_dimming\_lib.codex}}\index{doppler\_dimming\_lib.codex@\spxentry{doppler\_dimming\_lib.codex}!module@\spxentry{module}}\index{convolve\_codex\_filter() (in module doppler\_dimming\_lib.codex)@\spxentry{convolve\_codex\_filter()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.convolve_codex_filter}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{convolve\_codex\_filter}}}{\sphinxparam{\DUrole{n}{\_lambda}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{I}}\sphinxparamcomma \sphinxparam{\DUrole{n}{verbose}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{bool}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{True}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Convolve a function I with the codex filter at \_lambda transmissivity. For each available filter transmissivity T, computes the sum of
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{\_lambda}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} filter center in Angstrom.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{I}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}) \textendash{} function to convolve, argument is lambda in Armstrong
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{verbose}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} print info about computation. Defaults to True.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+convolution between I(lambda) and the filter transmissivity
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_R\_as\_spline() (in module doppler\_dimming\_lib.codex)@\spxentry{get\_R\_as\_spline()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.get_R_as_spline}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{get\_R\_as\_spline}}}{\sphinxparam{\DUrole{n}{integral\_function}}\sphinxparamcomma \sphinxparam{\DUrole{n}{lambda1}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{lambda2}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Find the cubic spline interpolator of the ratio function(T1)/function(T2). All the parameters of function must be provided as kwargs.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{function}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}) \textendash{} function to perform the ratio numerator/denominator
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{lambda1}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} numerator wavelenght in angstrom
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{lambda2}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} denominator wavelenght in angstrom
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+spline cubic interpolating 5.e5 \textless{} T \textless{} 3.e6
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+PPoly
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_T\_W\_from\_codex() (in module doppler\_dimming\_lib.codex)@\spxentry{get\_T\_W\_from\_codex()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.get_T_W_from_codex}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{get\_T\_W\_from\_codex}}}{\sphinxparam{\DUrole{n}{rho}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{Js}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{list}}\sphinxparamcomma \sphinxparam{\DUrole{n}{p0}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{list}}}{{ $\rightarrow$ list}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Uses least squares to find the values of temperature and solar wind that better fit the input Js.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{Js}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} codex intesities at the four wavelenghts, ordered
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{p0}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} initial guess for temperature and wind speed
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+fitted electron temperature and solar wind speed
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_T\_from\_R() (in module doppler\_dimming\_lib.codex)@\spxentry{get\_T\_from\_R()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.get_T_from_R}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{get\_T\_from\_R}}}{\sphinxparam{\DUrole{n}{s2\_over\_t2}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{rho}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{0.0}}\sphinxparamcomma \sphinxparam{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Retrieve the electron tempearture from a CODEX measured ratio between filters S2 and T2. First gets R as spline for the selected rho, then gets T from the fitted spline.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{s2\_over\_t2}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} ratio between two filters S2/T2
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{wind\_speed}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} wind speed in km/s. Defaults to 0.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+inferred electron temperature
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+uncertainties.ufloat
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{set\_codex\_transmittancies() (in module doppler\_dimming\_lib.codex)@\spxentry{set\_codex\_transmittancies()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.set_codex_transmittancies}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{set\_codex\_transmittancies}}}{\sphinxparam{\DUrole{n}{approx\_filter}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{bool}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{False}}\sphinxparamcomma \sphinxparam{\DUrole{n}{skipevery}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{10}}\sphinxparamcomma \sphinxparam{\DUrole{n}{min\_transmittancy}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{0.001}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Reads the excel file containing the filter transmittancies and sets the dictionary containing arrays of wavelenghts and transmittancies for each filter, ordered by center wavelenght.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{approx\_filter}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} approximate filter transmissivity with a box function. This may some time, but results are often inconsistent. Defaults to False.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{skipevery}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} sample one transmittance every n entries. Defaults to 10.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{min\_transmittancy}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} minimum transmittancy to consider, lower ones will be considered 0. Defaults to 0.001 (0.1\%).
+
+\end{itemize}
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{simulate\_codex\_chunk() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_chunk()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.simulate_codex_chunk}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{simulate\_codex\_chunk}}}{\sphinxparam{\DUrole{n}{densities}}\sphinxparamcomma \sphinxparam{\DUrole{n}{z}}\sphinxparamcomma \sphinxparam{\DUrole{n}{r\_pos}}\sphinxparamcomma \sphinxparam{\DUrole{n}{T\_e\_pos}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed\_pos}}\sphinxparamcomma \sphinxparam{\DUrole{n}{pid}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{simulate\_codex\_filter() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_filter()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.simulate_codex_filter}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{simulate\_codex\_filter}}}{\sphinxparam{\DUrole{n}{filter\_name: str}}\sphinxparamcomma \sphinxparam{\DUrole{n}{rho: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{T\_e: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{N\_e\_function=\textless{}function N\_e\_analytical\textgreater{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{verbose: bool = True}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Simulate the measurement from a CODEX filter by convolving its response with Cram, 1976 integral
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{filter\_name}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} filter name, can be T1, S1, T2 or S2
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{T\_e}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} electron temperature in Kelvin
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{wind\_speed}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wind speed in km/s
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{N\_e\_function}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} electron density as a function of the heliocentric distance (in rsun). Defaults to utils.N\_e\_analytical.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+value measured with selected filter in erg cm\sphinxhyphen{}2 s\sphinxhyphen{}1 sr\sphinxhyphen{}1
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{simulate\_codex\_images() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_images()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.simulate_codex_images}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{simulate\_codex\_images}}}{\sphinxparam{\DUrole{n}{image\_side}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed\_pos}}\sphinxparamcomma \sphinxparam{\DUrole{n}{densities\_dc}}\sphinxparamcomma \sphinxparam{\DUrole{n}{coordinates\_dc}}\sphinxparamcomma \sphinxparam{\DUrole{n}{T\_e\_pos}}\sphinxparamcomma \sphinxparam{\DUrole{n}{tot\_processors}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{simulate\_codex\_measure() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_measure()}\spxextra{in module doppler\_dimming\_lib.codex}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.codex.simulate_codex_measure}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.codex.}}\sphinxbfcode{\sphinxupquote{simulate\_codex\_measure}}}{\sphinxparam{\DUrole{n}{rho: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{T\_e: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{N\_e\_function=\textless{}function N\_e\_analytical\textgreater{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{verbose: bool = True}}}{{ $\rightarrow$ ndarray}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Simulate the measurement from the four CODEX filters by convolving their response with Cram, 1976 integral
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{T\_e}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} electron temperature in Kelvin
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{wind\_speed}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wind speed in km/s
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{N\_e\_function}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} electron density as a function of the heliocentric distance (in rsun). Defaults to utils.N\_e\_analytical.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+filters measured values, ordered by filter wavelength (T1=393, S1=398, T2=405, S2=423), in erg cm\sphinxhyphen{}2 s\sphinxhyphen{}1 sr\sphinxhyphen{}1
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+np.ndarray(4)
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\subsection{doppler\_dimming\_lib.datacubes module}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib.datacubes}}\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-datacubes-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.datacubes@\spxentry{doppler\_dimming\_lib.datacubes}}\index{doppler\_dimming\_lib.datacubes@\spxentry{doppler\_dimming\_lib.datacubes}!module@\spxentry{module}}\index{datacube\_from\_map() (in module doppler\_dimming\_lib.datacubes)@\spxentry{datacube\_from\_map()}\spxextra{in module doppler\_dimming\_lib.datacubes}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.datacubes.datacube_from_map}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.datacubes.}}\sphinxbfcode{\sphinxupquote{datacube\_from\_map}}}{\sphinxparam{\DUrole{n}{\_map}}\sphinxparamcomma \sphinxparam{\DUrole{o}{**}\DUrole{n}{kwargs}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{map\_from\_ddt() (in module doppler\_dimming\_lib.datacubes)@\spxentry{map\_from\_ddt()}\spxextra{in module doppler\_dimming\_lib.datacubes}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.datacubes.map_from_ddt}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.datacubes.}}\sphinxbfcode{\sphinxupquote{map\_from\_ddt}}}{\sphinxparam{\DUrole{n}{filename}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{str}}\sphinxparamcomma \sphinxparam{\DUrole{n}{hdu\_ID}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{0}}\sphinxparamcomma \sphinxparam{\DUrole{n}{resample\_to}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{list}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+
+
+\subsection{doppler\_dimming\_lib.integrals module}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib.integrals}}\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-integrals-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.integrals@\spxentry{doppler\_dimming\_lib.integrals}}\index{doppler\_dimming\_lib.integrals@\spxentry{doppler\_dimming\_lib.integrals}!module@\spxentry{module}}\index{I\_dl\_domega\_dphi() (in module doppler\_dimming\_lib.integrals)@\spxentry{I\_dl\_domega\_dphi()}\spxextra{in module doppler\_dimming\_lib.integrals}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.integrals.I_dl_domega_dphi}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.integrals.}}\sphinxbfcode{\sphinxupquote{I\_dl\_domega\_dphi}}}{\sphinxparam{\DUrole{n}{rho}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{\_lambda}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{T\_e}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{W}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{verbose}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{bool}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{True}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Interior integral, separated to allow calculations without integrating in dLOS
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{\_lambda}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wavelenght in angstrom
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{T\_e}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} electron temperature in Kelvin
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{W}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wind speed in km/s
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{verbose}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} print additional info at each step for debugging purposes. Defaults to True.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+photospheric irradiance integrated over solar disc
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{I\_s\_lambda() (in module doppler\_dimming\_lib.integrals)@\spxentry{I\_s\_lambda()}\spxextra{in module doppler\_dimming\_lib.integrals}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.integrals.I_s_lambda}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.integrals.}}\sphinxbfcode{\sphinxupquote{I\_s\_lambda}}}{\sphinxparam{\DUrole{o}{*}\DUrole{n}{args}}\sphinxparamcomma \sphinxparam{\DUrole{o}{**}\DUrole{n}{kwargs}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Wrapper for integrated\_I\_s used to compute total brightness by passing component=3 to integrated\_I\_s.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{\_lambda}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wavelenght in angstrom
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{T\_e}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} electron temperature
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{W}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wind speed in km/s
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{min\_x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} integration limit for LOS away from observer in solar radii. Defaults to 10.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{max\_x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} integration limit for LOS towards observer in solar radii. Defaults to 10.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{N\_e\_function}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} function used to calculate the electron density as a function of heliocentric distance. Defaults to utils.N\_e\_analytical.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{verbose}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} print additional info at each step. Defaults to True.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+integrated total brightness
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{integrated\_I\_s() (in module doppler\_dimming\_lib.integrals)@\spxentry{integrated\_I\_s()}\spxextra{in module doppler\_dimming\_lib.integrals}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.integrals.integrated_I_s}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.integrals.}}\sphinxbfcode{\sphinxupquote{integrated\_I\_s}}}{\sphinxparam{\DUrole{n}{rho: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{\_lambda: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{T\_e: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{component: int}}\sphinxparamcomma \sphinxparam{\DUrole{n}{min\_x: float = None}}\sphinxparamcomma \sphinxparam{\DUrole{n}{max\_x: float = None}}\sphinxparamcomma \sphinxparam{\DUrole{n}{N\_e\_function=\textless{}function N\_e\_analytical\textgreater{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{verbose=True}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Integrate thomson scattering over photospheric wavelenghts, solar disc dimension and line of sight (main integral from Cram 1976.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{\_lambda}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wavelenght in angstrom
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{T\_e}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} electron temperature
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{W}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} wind speed in km/s
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{component}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} polarized component to compute. With respect to solar limb, 0 is radial, 1 is tangent, 2 is pb (=tangent\sphinxhyphen{}radial, Cram 1976) and 3 is the sum (total brightness)
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{min\_x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} integration limit for LOS away from observer in solar radii. Defaults to 10.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{max\_x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} integration limit for LOS towards observer in solar radii. Defaults to 10.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{N\_e\_function}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} function used to calculate the electron density as a function of heliocentric distance, in cm\sphinxhyphen{}3. Defaults to utils.N\_e\_analytical.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{verbose}} (\sphinxstyleliteralemphasis{\sphinxupquote{bool}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} print additional info at each step. Defaults to True.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+integrated emission in erg cm\sphinxhyphen{}2 A\sphinxhyphen{}1 s\sphinxhyphen{}1 sr\sphinxhyphen{}1
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\subsection{doppler\_dimming\_lib.inversion module}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib.inversion}}\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-inversion-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.inversion@\spxentry{doppler\_dimming\_lib.inversion}}\index{doppler\_dimming\_lib.inversion@\spxentry{doppler\_dimming\_lib.inversion}!module@\spxentry{module}}\index{invert\_temperature\_batch() (in module doppler\_dimming\_lib.inversion)@\spxentry{invert\_temperature\_batch()}\spxextra{in module doppler\_dimming\_lib.inversion}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.inversion.invert_temperature_batch}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.inversion.}}\sphinxbfcode{\sphinxupquote{invert\_temperature\_batch}}}{\sphinxparam{\DUrole{n}{codex\_images}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed\_pos}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray\DUrole{w}{ }\DUrole{p}{|}\DUrole{w}{ }float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{densities\_dc}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{helio\_distances\_dc}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{pid}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{list}}}{{ $\rightarrow$ ndarray}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Get the temperature by inverting CODEX images ratio.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{codex\_images}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} images from CODEX measurements. Should be a {[}4, m, n{]} array containing 4 filters measurements {[}T1, S1, T2, S2{]} (in order) of shape {[}m, n{]}.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{wind\_speed\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} {[}m, n{]} array or float containing the wind speed intensity in the POS for each pixel of the CODEX measurements. If a float is provided, homogeneous wind speed is assumed.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{densities\_dc}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} datacube of shape {[}l, m, n{]} containing electron densities in cm\textasciicircum{}\sphinxhyphen{}3. The first index contains values along the LOS for each pixel, and POS is assumed to be at int(l/2).
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{helio\_distances\_dc}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} datacube of shape {[}l, m, n{]} containing heliocentric distances of each density datacube entry in solar radii. The first index contains values along the LOS for each pixel, and POS is assumed to be at int(l/2).
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{pid}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} id used for printing progress.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+temperatures resulting from inversion in the POS, in Kelvin.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+np.ndarray
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{invert\_temperature\_parallel() (in module doppler\_dimming\_lib.inversion)@\spxentry{invert\_temperature\_parallel()}\spxextra{in module doppler\_dimming\_lib.inversion}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.inversion.invert_temperature_parallel}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.inversion.}}\sphinxbfcode{\sphinxupquote{invert\_temperature\_parallel}}}{\sphinxparam{\DUrole{n}{codex\_images}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{wind\_speed\_pos}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{densities\_dc}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{coordinates\_dc}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{total\_processors}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}\DUrole{w}{ }\DUrole{o}{=}\DUrole{w}{ }\DUrole{default_value}{None}}}{{ $\rightarrow$ ndarray}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Get the temperature by inverting CODEX images ratio. This version first splits the domain for X processors and then applies invert\_temperature\_batch to each subdomain, before merging the result.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{codex\_images}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} images from CODEX measurements. Should be a {[}4, m, n{]} array containing 4 filters measurements {[}T1, S1, T2, S2{]} (in order) of shape {[}m, n{]}.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{wind\_speed\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} {[}m, n{]} array or float containing the wind speed intensity in the POS for each pixel of the CODEX measurements. If a float is provided, homogeneous wind speed is assumed.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{densities\_dc}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} datacube of shape {[}l, m, n{]} containing electron densities in cm\textasciicircum{}\sphinxhyphen{}3. The first index contains values along the LOS for each pixel, and POS is assumed to be at int(l/2).
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{coordinates\_dc}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} datacube of shape {[}l, m, n{]} containing coordinates of each density datacube entry in solar radii. The first index contains values along the LOS for each pixel, and POS is assumed to be at int(l/2).
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{total\_processors}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{optional}}) \textendash{} number of processors for parallelization. This number should be tweaked to avoid asymmetric division of the domain which can increase the computation time. If set to None, 4 processors are used. Defaults to None.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+temperatures resulting from inversion in the POS, in Kelvin.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+np.ndarray
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\subsection{doppler\_dimming\_lib.metis module}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib.metis}}\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-metis-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.metis@\spxentry{doppler\_dimming\_lib.metis}}\index{doppler\_dimming\_lib.metis@\spxentry{doppler\_dimming\_lib.metis}!module@\spxentry{module}}\index{Ne\_exponential\_fit() (in module doppler\_dimming\_lib.metis)@\spxentry{Ne\_exponential\_fit()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.Ne_exponential_fit}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{Ne\_exponential\_fit}}}{\sphinxparam{\DUrole{n}{x}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{b}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Fitted ne based on metis pB.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{x}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric radial distance in Rsun
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{b}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} coefficients array
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+electron density at a given heliocentric radial distance
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{Te\_pos\_from\_ne() (in module doppler\_dimming\_lib.metis)@\spxentry{Te\_pos\_from\_ne()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.Te_pos_from_ne}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{Te\_pos\_from\_ne}}}{\sphinxparam{\DUrole{n}{filename}}\sphinxparamcomma \sphinxparam{\DUrole{n}{image\_side}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{datacube\_from\_map() (in module doppler\_dimming\_lib.metis)@\spxentry{datacube\_from\_map()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.datacube_from_map}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{datacube\_from\_map}}}{\sphinxparam{\DUrole{n}{ne\_map}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{GenericMap}}\sphinxparamcomma \sphinxparam{\DUrole{n}{coefficients}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}}{{ $\rightarrow$ ndarray}}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{density\_dc\_from\_ddt() (in module doppler\_dimming\_lib.metis)@\spxentry{density\_dc\_from\_ddt()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.density_dc_from_ddt}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{density\_dc\_from\_ddt}}}{\sphinxparam{\DUrole{n}{filename}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{str}}\sphinxparamcomma \sphinxparam{\DUrole{n}{size\_in\_pixel}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{int}}}{{ $\rightarrow$ ndarray}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Get the electron density datacube from fitted metis values.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{filename}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} fits filename of the metis VL pb.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{size\_in\_pixel}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} output datacube size
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+electron density datacube of size {[}size\_in\_pixel, size\_in\_pixel, size\_in\_pixel{]}
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+np.ndarray
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{geom\_factor\_function() (in module doppler\_dimming\_lib.metis)@\spxentry{geom\_factor\_function()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.geom_factor_function}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{geom\_factor\_function}}}{\sphinxparam{\DUrole{n}{r}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Geometric factor function from Van de Hulst.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{r}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+computed geometric factor
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_3d\_param() (in module doppler\_dimming\_lib.metis)@\spxentry{get\_3d\_param()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.get_3d_param}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{get\_3d\_param}}}{\sphinxparam{\DUrole{n}{param}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{str}}\sphinxparamcomma \sphinxparam{\DUrole{n}{pix\_to\_rsun}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{coefficients}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{ndarray}}\sphinxparamcomma \sphinxparam{\DUrole{n}{pixel\_pos}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{list}}\sphinxparamcomma \sphinxparam{\DUrole{n}{sun\_center\_pos}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{list}}\sphinxparamcomma \sphinxparam{\DUrole{n}{z\_pix}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Returns the electron density or temperature from a Metis map fitted with DDT. For the electron temperature calculation see utls.T\_e\_analytical.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{param}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} parameter to calculate, either Ne or Te
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{map\_los}} (\sphinxstyleliteralemphasis{\sphinxupquote{sunpy.map.Map}}) \textendash{} map contaning the parameter and metadata in sunpy format
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{coefficients}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} {[}8, 360{]} array containing the fitted coefficients in the first axis.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{pixel\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} {[}y, x{]} pixel coordinates at which to calculate the parameter.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{sun\_center\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} {[}y, x{]} pixel coordinates of the sun center. Provided by the user to avoid useless calculations.
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{x\_los}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} distance in pixels along the line of sight at which to calculate the parameter.
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+electron density at set location
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_ne\_map() (in module doppler\_dimming\_lib.metis)@\spxentry{get\_ne\_map()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.get_ne_map}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{get\_ne\_map}}}{\sphinxparam{\DUrole{n}{filename}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{get\_pix\_to\_rsun() (in module doppler\_dimming\_lib.metis)@\spxentry{get\_pix\_to\_rsun()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.get_pix_to_rsun}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{get\_pix\_to\_rsun}}}{\sphinxparam{\DUrole{n}{input\_map}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{GenericMap}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Returns the platescale in pixel/Rsun
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{input\_map}} (\sphinxstyleliteralemphasis{\sphinxupquote{sunpy.map.Map}}) \textendash{} map for which to calculate the ratio
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+pixel/Rsun platescale
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{read\_sav\_model() (in module doppler\_dimming\_lib.metis)@\spxentry{read\_sav\_model()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.read_sav_model}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{read\_sav\_model}}}{\sphinxparam{\DUrole{n}{filename}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{str}}}{{ $\rightarrow$ list}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Reads a sav idl file and returns the parameters list.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{filename}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}) \textendash{} path to idl save file (.sav)
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+list of 3d array containing the red parameters. In order: positions array, sun radial distances, sun latitude angle, densities, electron temperatures, proton temperatures, solar wind speed.
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{resample\_ddt\_ne() (in module doppler\_dimming\_lib.metis)@\spxentry{resample\_ddt\_ne()}\spxextra{in module doppler\_dimming\_lib.metis}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.metis.resample_ddt_ne}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.metis.}}\sphinxbfcode{\sphinxupquote{resample\_ddt\_ne}}}{\sphinxparam{\DUrole{n}{new\_dimension}}\sphinxparamcomma \sphinxparam{\DUrole{n}{ne\_header}}\sphinxparamcomma \sphinxparam{\DUrole{n}{ne\_data}}\sphinxparamcomma \sphinxparam{\DUrole{n}{ne\_polar\_data}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+
+
+\subsection{doppler\_dimming\_lib.parallelization module}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib.parallelization}}\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-parallelization-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.parallelization@\spxentry{doppler\_dimming\_lib.parallelization}}\index{doppler\_dimming\_lib.parallelization@\spxentry{doppler\_dimming\_lib.parallelization}!module@\spxentry{module}}\index{batch\_2d\_array() (in module doppler\_dimming\_lib.parallelization)@\spxentry{batch\_2d\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.parallelization.batch_2d_array}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.parallelization.}}\sphinxbfcode{\sphinxupquote{batch\_2d\_array}}}{\sphinxparam{\DUrole{n}{input\_array}}\sphinxparamcomma \sphinxparam{\DUrole{n}{tot\_nprocs}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{batch\_3d\_array() (in module doppler\_dimming\_lib.parallelization)@\spxentry{batch\_3d\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.parallelization.batch_3d_array}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.parallelization.}}\sphinxbfcode{\sphinxupquote{batch\_3d\_array}}}{\sphinxparam{\DUrole{n}{input\_array}}\sphinxparamcomma \sphinxparam{\DUrole{n}{tot\_nprocs}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{batch\_arrays() (in module doppler\_dimming\_lib.parallelization)@\spxentry{batch\_arrays()}\spxextra{in module doppler\_dimming\_lib.parallelization}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.parallelization.batch_arrays}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.parallelization.}}\sphinxbfcode{\sphinxupquote{batch\_arrays}}}{\sphinxparam{\DUrole{n}{input\_list}}\sphinxparamcomma \sphinxparam{\DUrole{n}{tot\_nprocs}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{main() (in module doppler\_dimming\_lib.parallelization)@\spxentry{main()}\spxextra{in module doppler\_dimming\_lib.parallelization}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.parallelization.main}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.parallelization.}}\sphinxbfcode{\sphinxupquote{main}}}{}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{merge\_2d\_batched\_array() (in module doppler\_dimming\_lib.parallelization)@\spxentry{merge\_2d\_batched\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.parallelization.merge_2d_batched_array}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.parallelization.}}\sphinxbfcode{\sphinxupquote{merge\_2d\_batched\_array}}}{\sphinxparam{\DUrole{n}{input\_array}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+
+
+\subsection{doppler\_dimming\_lib.utils module}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib.utils}}\label{\detokenize{doppler_dimming_lib:doppler-dimming-lib-utils-module}}\index{module@\spxentry{module}!doppler\_dimming\_lib.utils@\spxentry{doppler\_dimming\_lib.utils}}\index{doppler\_dimming\_lib.utils@\spxentry{doppler\_dimming\_lib.utils}!module@\spxentry{module}}\index{N\_e\_analytical() (in module doppler\_dimming\_lib.utils)@\spxentry{N\_e\_analytical()}\spxextra{in module doppler\_dimming\_lib.utils}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.utils.N_e_analytical}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.utils.}}\sphinxbfcode{\sphinxupquote{N\_e\_analytical}}}{\sphinxparam{\DUrole{n}{r}\DUrole{p}{:}\DUrole{w}{ }\DUrole{n}{float}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Returns the electron density as a radial function from sun center.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{r}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} radial distance in R\_sun
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+electron density in cm\sphinxhyphen{}3
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{T\_e\_analytical() (in module doppler\_dimming\_lib.utils)@\spxentry{T\_e\_analytical()}\spxextra{in module doppler\_dimming\_lib.utils}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.utils.T_e_analytical}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.utils.}}\sphinxbfcode{\sphinxupquote{T\_e\_analytical}}}{\sphinxparam{\DUrole{n}{rho: float}}\sphinxparamcomma \sphinxparam{\DUrole{n}{N\_e\_function=\textless{}function N\_e\_analytical\textgreater{}}}\sphinxparamcomma \sphinxparam{\DUrole{n}{**kwargs}}}{{ $\rightarrow$ float}}
+\pysigstopsignatures
+\sphinxAtStartPar
+Returns an analytical electron temperature as a function of doppler\_dimming\_lim.utils.N\_e\_analytical from Lemaire and Stegen 2016
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{rho}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} heliocentric distance in solar radii
+
+\item {} 
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{N\_e\_function}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}) \textendash{} density as a function of heliocentric distance (in sr). Use a polynomial to interpolate data if necessary
+
+\end{itemize}
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+electron temperature profile
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+float
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{get\_pix\_to\_rsun() (in module doppler\_dimming\_lib.utils)@\spxentry{get\_pix\_to\_rsun()}\spxextra{in module doppler\_dimming\_lib.utils}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.utils.get_pix_to_rsun}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.utils.}}\sphinxbfcode{\sphinxupquote{get\_pix\_to\_rsun}}}{\sphinxparam{\DUrole{n}{input\_map}}}{}
+\pysigstopsignatures
+\end{fulllineitems}
+
+\index{get\_sun\_center\_from\_map() (in module doppler\_dimming\_lib.utils)@\spxentry{get\_sun\_center\_from\_map()}\spxextra{in module doppler\_dimming\_lib.utils}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.utils.get_sun_center_from_map}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.utils.}}\sphinxbfcode{\sphinxupquote{get\_sun\_center\_from\_map}}}{\sphinxparam{\DUrole{n}{map}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Returns the coordinates of the pixel containing the sun center. Use this instead of CRPIX!!!!
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{map}} (\sphinxstyleliteralemphasis{\sphinxupquote{sunpy.map.Map}}) \textendash{} map containing the image and reference frame
+
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
+coordinate (x, y)
+
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
+list
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{timeit() (in module doppler\_dimming\_lib.utils)@\spxentry{timeit()}\spxextra{in module doppler\_dimming\_lib.utils}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{doppler_dimming_lib:doppler_dimming_lib.utils.timeit}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxcode{\sphinxupquote{doppler\_dimming\_lib.utils.}}\sphinxbfcode{\sphinxupquote{timeit}}}{\sphinxparam{\DUrole{n}{func}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
+Wrapper for timing functions’ execution times. Prints the difference between starting and ending time.
+\begin{quote}\begin{description}
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{func}} (\sphinxstyleliteralemphasis{\sphinxupquote{callable}}) \textendash{} function of which to measure the execution time
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+
+
+\subsection{Module contents}
+\label{\detokenize{doppler_dimming_lib:module-doppler_dimming_lib}}\label{\detokenize{doppler_dimming_lib:module-contents}}\index{module@\spxentry{module}!doppler\_dimming\_lib@\spxentry{doppler\_dimming\_lib}}\index{doppler\_dimming\_lib@\spxentry{doppler\_dimming\_lib}!module@\spxentry{module}}
+\sphinxAtStartPar
+AAAAAAAAAAAAAAAAAAAAAA
+
+
 \chapter{Indices and tables}
 \label{\detokenize{index:indices-and-tables}}\begin{itemize}
 \item {} 
@@ -103,6 +1207,23 @@
 \end{itemize}
 
 
+\renewcommand{\indexname}{Python Module Index}
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\bigletter{d}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.c\_libraries}\sphinxstyleindexpageref{doppler_dimming_lib.c_libraries:\detokenize{module-doppler_dimming_lib.c_libraries}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.c\_libraries.c\_lib}\sphinxstyleindexpageref{doppler_dimming_lib.c_libraries:\detokenize{module-doppler_dimming_lib.c_libraries.c_lib}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.codex}\sphinxstyleindexpageref{doppler_dimming_lib:\detokenize{module-doppler_dimming_lib.codex}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.data}\sphinxstyleindexpageref{doppler_dimming_lib.data:\detokenize{module-doppler_dimming_lib.data}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.datacubes}\sphinxstyleindexpageref{doppler_dimming_lib:\detokenize{module-doppler_dimming_lib.datacubes}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.integrals}\sphinxstyleindexpageref{doppler_dimming_lib:\detokenize{module-doppler_dimming_lib.integrals}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.inversion}\sphinxstyleindexpageref{doppler_dimming_lib:\detokenize{module-doppler_dimming_lib.inversion}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.metis}\sphinxstyleindexpageref{doppler_dimming_lib:\detokenize{module-doppler_dimming_lib.metis}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.parallelization}\sphinxstyleindexpageref{doppler_dimming_lib:\detokenize{module-doppler_dimming_lib.parallelization}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.spectra}\sphinxstyleindexpageref{doppler_dimming_lib.spectra:\detokenize{module-doppler_dimming_lib.spectra}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.spectra.spectra}\sphinxstyleindexpageref{doppler_dimming_lib.spectra:\detokenize{module-doppler_dimming_lib.spectra.spectra}}
+\item\relax\sphinxstyleindexentry{doppler\_dimming\_lib.utils}\sphinxstyleindexpageref{doppler_dimming_lib:\detokenize{module-doppler_dimming_lib.utils}}
+\end{sphinxtheindex}
 
 \renewcommand{\indexname}{Index}
 \printindex

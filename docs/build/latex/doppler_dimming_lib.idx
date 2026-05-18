@@ -1,0 +1,65 @@
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.c\_libraries.c\_lib@\spxentry{doppler\_dimming\_lib.c\_libraries.c\_lib}|hyperpage}{1}
+\indexentry{doppler\_dimming\_lib.c\_libraries.c\_lib@\spxentry{doppler\_dimming\_lib.c\_libraries.c\_lib}!module@\spxentry{module}|hyperpage}{1}
+\indexentry{get\_c\_library() (in module doppler\_dimming\_lib.c\_libraries.c\_lib)@\spxentry{get\_c\_library()}\spxextra{in module doppler\_dimming\_lib.c\_libraries.c\_lib}|hyperpage}{1}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.c\_libraries@\spxentry{doppler\_dimming\_lib.c\_libraries}|hyperpage}{1}
+\indexentry{doppler\_dimming\_lib.c\_libraries@\spxentry{doppler\_dimming\_lib.c\_libraries}!module@\spxentry{module}|hyperpage}{1}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.data@\spxentry{doppler\_dimming\_lib.data}|hyperpage}{1}
+\indexentry{doppler\_dimming\_lib.data@\spxentry{doppler\_dimming\_lib.data}!module@\spxentry{module}|hyperpage}{1}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.spectra.spectra@\spxentry{doppler\_dimming\_lib.spectra.spectra}|hyperpage}{2}
+\indexentry{doppler\_dimming\_lib.spectra.spectra@\spxentry{doppler\_dimming\_lib.spectra.spectra}!module@\spxentry{module}|hyperpage}{2}
+\indexentry{get\_spectrum\_from\_txt() (in module doppler\_dimming\_lib.spectra.spectra)@\spxentry{get\_spectrum\_from\_txt()}\spxextra{in module doppler\_dimming\_lib.spectra.spectra}|hyperpage}{2}
+\indexentry{set\_spectrum\_level() (in module doppler\_dimming\_lib.spectra.spectra)@\spxentry{set\_spectrum\_level()}\spxextra{in module doppler\_dimming\_lib.spectra.spectra}|hyperpage}{2}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.spectra@\spxentry{doppler\_dimming\_lib.spectra}|hyperpage}{2}
+\indexentry{doppler\_dimming\_lib.spectra@\spxentry{doppler\_dimming\_lib.spectra}!module@\spxentry{module}|hyperpage}{2}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.codex@\spxentry{doppler\_dimming\_lib.codex}|hyperpage}{2}
+\indexentry{doppler\_dimming\_lib.codex@\spxentry{doppler\_dimming\_lib.codex}!module@\spxentry{module}|hyperpage}{2}
+\indexentry{convolve\_codex\_filter() (in module doppler\_dimming\_lib.codex)@\spxentry{convolve\_codex\_filter()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{2}
+\indexentry{get\_R\_as\_spline() (in module doppler\_dimming\_lib.codex)@\spxentry{get\_R\_as\_spline()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{2}
+\indexentry{get\_T\_W\_from\_codex() (in module doppler\_dimming\_lib.codex)@\spxentry{get\_T\_W\_from\_codex()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{3}
+\indexentry{get\_T\_from\_R() (in module doppler\_dimming\_lib.codex)@\spxentry{get\_T\_from\_R()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{3}
+\indexentry{set\_codex\_transmittancies() (in module doppler\_dimming\_lib.codex)@\spxentry{set\_codex\_transmittancies()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{3}
+\indexentry{simulate\_codex\_chunk() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_chunk()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{4}
+\indexentry{simulate\_codex\_filter() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_filter()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{4}
+\indexentry{simulate\_codex\_images() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_images()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{4}
+\indexentry{simulate\_codex\_measure() (in module doppler\_dimming\_lib.codex)@\spxentry{simulate\_codex\_measure()}\spxextra{in module doppler\_dimming\_lib.codex}|hyperpage}{4}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.datacubes@\spxentry{doppler\_dimming\_lib.datacubes}|hyperpage}{5}
+\indexentry{doppler\_dimming\_lib.datacubes@\spxentry{doppler\_dimming\_lib.datacubes}!module@\spxentry{module}|hyperpage}{5}
+\indexentry{datacube\_from\_map() (in module doppler\_dimming\_lib.datacubes)@\spxentry{datacube\_from\_map()}\spxextra{in module doppler\_dimming\_lib.datacubes}|hyperpage}{5}
+\indexentry{map\_from\_ddt() (in module doppler\_dimming\_lib.datacubes)@\spxentry{map\_from\_ddt()}\spxextra{in module doppler\_dimming\_lib.datacubes}|hyperpage}{5}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.integrals@\spxentry{doppler\_dimming\_lib.integrals}|hyperpage}{5}
+\indexentry{doppler\_dimming\_lib.integrals@\spxentry{doppler\_dimming\_lib.integrals}!module@\spxentry{module}|hyperpage}{5}
+\indexentry{I\_dl\_domega\_dphi() (in module doppler\_dimming\_lib.integrals)@\spxentry{I\_dl\_domega\_dphi()}\spxextra{in module doppler\_dimming\_lib.integrals}|hyperpage}{5}
+\indexentry{I\_s\_lambda() (in module doppler\_dimming\_lib.integrals)@\spxentry{I\_s\_lambda()}\spxextra{in module doppler\_dimming\_lib.integrals}|hyperpage}{5}
+\indexentry{integrated\_I\_s() (in module doppler\_dimming\_lib.integrals)@\spxentry{integrated\_I\_s()}\spxextra{in module doppler\_dimming\_lib.integrals}|hyperpage}{5}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.inversion@\spxentry{doppler\_dimming\_lib.inversion}|hyperpage}{6}
+\indexentry{doppler\_dimming\_lib.inversion@\spxentry{doppler\_dimming\_lib.inversion}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{invert\_temperature\_batch() (in module doppler\_dimming\_lib.inversion)@\spxentry{invert\_temperature\_batch()}\spxextra{in module doppler\_dimming\_lib.inversion}|hyperpage}{6}
+\indexentry{invert\_temperature\_parallel() (in module doppler\_dimming\_lib.inversion)@\spxentry{invert\_temperature\_parallel()}\spxextra{in module doppler\_dimming\_lib.inversion}|hyperpage}{7}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.metis@\spxentry{doppler\_dimming\_lib.metis}|hyperpage}{7}
+\indexentry{doppler\_dimming\_lib.metis@\spxentry{doppler\_dimming\_lib.metis}!module@\spxentry{module}|hyperpage}{7}
+\indexentry{Ne\_exponential\_fit() (in module doppler\_dimming\_lib.metis)@\spxentry{Ne\_exponential\_fit()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{7}
+\indexentry{Te\_pos\_from\_ne() (in module doppler\_dimming\_lib.metis)@\spxentry{Te\_pos\_from\_ne()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{7}
+\indexentry{datacube\_from\_map() (in module doppler\_dimming\_lib.metis)@\spxentry{datacube\_from\_map()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{8}
+\indexentry{density\_dc\_from\_ddt() (in module doppler\_dimming\_lib.metis)@\spxentry{density\_dc\_from\_ddt()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{8}
+\indexentry{geom\_factor\_function() (in module doppler\_dimming\_lib.metis)@\spxentry{geom\_factor\_function()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{8}
+\indexentry{get\_3d\_param() (in module doppler\_dimming\_lib.metis)@\spxentry{get\_3d\_param()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{8}
+\indexentry{get\_ne\_map() (in module doppler\_dimming\_lib.metis)@\spxentry{get\_ne\_map()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{8}
+\indexentry{get\_pix\_to\_rsun() (in module doppler\_dimming\_lib.metis)@\spxentry{get\_pix\_to\_rsun()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{8}
+\indexentry{read\_sav\_model() (in module doppler\_dimming\_lib.metis)@\spxentry{read\_sav\_model()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{9}
+\indexentry{resample\_ddt\_ne() (in module doppler\_dimming\_lib.metis)@\spxentry{resample\_ddt\_ne()}\spxextra{in module doppler\_dimming\_lib.metis}|hyperpage}{9}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.parallelization@\spxentry{doppler\_dimming\_lib.parallelization}|hyperpage}{9}
+\indexentry{doppler\_dimming\_lib.parallelization@\spxentry{doppler\_dimming\_lib.parallelization}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{batch\_2d\_array() (in module doppler\_dimming\_lib.parallelization)@\spxentry{batch\_2d\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}|hyperpage}{9}
+\indexentry{batch\_3d\_array() (in module doppler\_dimming\_lib.parallelization)@\spxentry{batch\_3d\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}|hyperpage}{9}
+\indexentry{batch\_arrays() (in module doppler\_dimming\_lib.parallelization)@\spxentry{batch\_arrays()}\spxextra{in module doppler\_dimming\_lib.parallelization}|hyperpage}{9}
+\indexentry{main() (in module doppler\_dimming\_lib.parallelization)@\spxentry{main()}\spxextra{in module doppler\_dimming\_lib.parallelization}|hyperpage}{9}
+\indexentry{merge\_2d\_batched\_array() (in module doppler\_dimming\_lib.parallelization)@\spxentry{merge\_2d\_batched\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}|hyperpage}{9}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib.utils@\spxentry{doppler\_dimming\_lib.utils}|hyperpage}{9}
+\indexentry{doppler\_dimming\_lib.utils@\spxentry{doppler\_dimming\_lib.utils}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{N\_e\_analytical() (in module doppler\_dimming\_lib.utils)@\spxentry{N\_e\_analytical()}\spxextra{in module doppler\_dimming\_lib.utils}|hyperpage}{9}
+\indexentry{T\_e\_analytical() (in module doppler\_dimming\_lib.utils)@\spxentry{T\_e\_analytical()}\spxextra{in module doppler\_dimming\_lib.utils}|hyperpage}{9}
+\indexentry{get\_pix\_to\_rsun() (in module doppler\_dimming\_lib.utils)@\spxentry{get\_pix\_to\_rsun()}\spxextra{in module doppler\_dimming\_lib.utils}|hyperpage}{10}
+\indexentry{get\_sun\_center\_from\_map() (in module doppler\_dimming\_lib.utils)@\spxentry{get\_sun\_center\_from\_map()}\spxextra{in module doppler\_dimming\_lib.utils}|hyperpage}{10}
+\indexentry{timeit() (in module doppler\_dimming\_lib.utils)@\spxentry{timeit()}\spxextra{in module doppler\_dimming\_lib.utils}|hyperpage}{10}
+\indexentry{module@\spxentry{module}!doppler\_dimming\_lib@\spxentry{doppler\_dimming\_lib}|hyperpage}{10}
+\indexentry{doppler\_dimming\_lib@\spxentry{doppler\_dimming\_lib}!module@\spxentry{module}|hyperpage}{10}

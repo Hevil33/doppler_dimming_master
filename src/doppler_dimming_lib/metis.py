@@ -1,20 +1,18 @@
 import sys
+from logging import info
 
 import astropy.units as u
 import matplotlib.pyplot as plt
 import numpy as np
 import sunpy
-import tqdm
+import sunpy.map
 from astropy.coordinates import SkyCoord
 from astropy.io import fits
 from scipy.io import readsav
 from sunpy.map import Map
+from tqdm import tqdm
 
-from doppler_dimming_lib.utils import (
-    T_e_analytical,
-    get_pix_to_rsun,
-    get_sun_center_from_map,
-)
+from .utils import T_e_analytical, get_pix_to_rsun, get_sun_center_from_map
 
 
 def read_sav_model(filename: str) -> list:
@@ -95,7 +93,7 @@ def geom_factor_function(r: float) -> float:
     return geom
 
 
-def get_pix_to_rsun(input_map: sunpy.map.Map) -> float:
+def get_pix_to_rsun(input_map: sunpy.map.GenericMap) -> float:
     """Returns the platescale in pixel/Rsun
 
     Args:
@@ -118,7 +116,7 @@ def get_3d_param(
     """Returns the electron density or temperature from a Metis map fitted with DDT. For the electron temperature calculation see utls.T_e_analytical.
 
     Args:
-        param (str): parameter to calculate, either "Ne" or "Te"
+        param (str): parameter to calculate, either Ne or Te
         map_los (sunpy.map.Map): map contaning the parameter and metadata in sunpy format
         coefficients (np.ndarray): [8, 360] array containing the fitted coefficients in the first axis.
         pixel_pos (list): [y, x] pixel coordinates at which to calculate the parameter.
@@ -187,8 +185,8 @@ def get_3d_param(
         return T_e if T_e > 0 else 0
 
     elif param == "wind":
-
-        ...
+        info("get_3d_param with param=wind is not yet implemented")
+        sys.exit()
 
 
 """
@@ -247,7 +245,7 @@ def get_geom_factor(ne_map, ne_polar_data, fitted_polar):
 """
 
 
-def resample_data(new_dimension, ne_header, ne_data, ne_polar_data):
+def resample_ddt_ne(new_dimension, ne_header, ne_data, ne_polar_data):
     _map = sunpy.map.Map(ne_data, ne_header)
     resampled = _map.resample([new_dimension, new_dimension] * u.pixel)
 
@@ -262,7 +260,9 @@ def resample_data(new_dimension, ne_header, ne_data, ne_polar_data):
     return resampled_header, resampled.data, resampled_polar.data
 
 
-def datacube_from_map(ne_map, coefficients):
+def datacube_from_map(
+    ne_map: sunpy.map.GenericMap, coefficients: np.ndarray
+) -> np.ndarray:
     side_pix = ne_map.data.shape[0]
 
     dc = np.zeros(shape=(side_pix, side_pix, side_pix), dtype=float)
@@ -277,7 +277,7 @@ def datacube_from_map(ne_map, coefficients):
     # print(side_pix)
     # sys.exit()
 
-    for z_pix in tqdm.tqdm(range(side_pix), desc="Filling density datacube"):
+    for z_pix in tqdm(range(side_pix), desc="Filling density datacube"):
         for y_pix in range(side_pix):
             for x_pix in range(side_pix):
                 # input()
@@ -448,14 +448,24 @@ def get_ne_map(filename):
     return ne_map
 
 
-def datacube_from_file(filename, size_in_pixel):
+def density_dc_from_ddt(filename: str, size_in_pixel: int) -> np.ndarray:
+    """Get the electron density datacube from fitted metis values.
+
+    Args:
+        filename (str): fits filename of the metis VL pb.
+        size_in_pixel (int): output datacube size
+
+    Returns:
+        np.ndarray: electron density datacube of size [size_in_pixel, size_in_pixel, size_in_pixel]
+    """
+
     with fits.open(filename) as file:
         ne_header = file[0].header
         ne_data = file[0].data
         ne_polar_data = file[1].data
         ne_coeffs_data = file[2].data
 
-    ne_header, ne_data, ne_polar_data = resample_data(
+    ne_header, ne_data, ne_polar_data = resample_ddt_ne(
         size_in_pixel, ne_header, ne_data, ne_polar_data
     )
 
@@ -498,3 +508,48 @@ def datacube_from_file(filename, size_in_pixel):
     dc, coordinates = datacube_from_map(ne_map, ne_coeffs_data)
 
     return dc, coordinates
+
+
+def Te_pos_from_ne(filename, image_side):
+    info("Reading temperature from file")
+    with fits.open(filename) as file:
+        ne_header = file[0].header
+        ne_data = file[0].data
+        ne_polar_data = file[1].data
+        ne_coeffs_data = file[2].data
+
+    ne_header, ne_data, ne_polar_data = resample_ddt_ne(
+        image_side, ne_header, ne_data, ne_polar_data
+    )
+
+    ne_map = sunpy.map.Map(ne_data, ne_header)
+
+    # side_pix = 2 * int(geom_factor.shape[0])
+    side_pix = ne_map.data.shape[0]
+
+    x_center, y_center = get_sun_center_from_map(ne_map)
+    pix_to_rsun = get_pix_to_rsun(ne_map)
+
+    fig, ax = plt.subplots(dpi=200, figsize=(5, 4), constrained_layout=True)
+    mappable = ax.imshow(ne_map.data)
+    # fig.colorbar(mappable)
+
+    # NO, done automatically
+    # pixel where the datacube start (in the image)
+    # xstart_pix = int(x_center - side_pix / 2)
+    # ystart_pix = int(y_center - side_pix / 2)
+
+    fitted_Tes = np.zeros(shape=(side_pix, side_pix), dtype=float)
+    for y_pix in tqdm(range(side_pix), desc="Te image row"):
+        for x_pix in range(side_pix):
+            fitted_Tes[y_pix, x_pix] = get_3d_param(
+                "Te",
+                pix_to_rsun,
+                ne_coeffs_data,
+                # pixel_pos=[y_pix + ystart_pix, x_pix + xstart_pix],
+                pixel_pos=[y_pix, x_pix],
+                sun_center_pos=[y_center, x_center],
+                z_pix=0,
+            )
+
+    return fitted_Tes

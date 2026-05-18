@@ -1,7 +1,9 @@
 import sys
 import time
+from logging import info
 
 import numpy as np
+import sunpy.map
 from astropy import constants as const
 from astropy import units as u
 from astropy.coordinates import SkyCoord
@@ -25,7 +27,7 @@ def timeit(func):
         result = func(*args, **kwargs)
         end_time = time.perf_counter()
         total_time = end_time - start_time
-        print(f"Function {func.__name__}{args} {kwargs} Took {total_time:.4f} seconds")
+        info(f"Function {func.__name__}{args} {kwargs} Took {total_time:.4f} seconds")
         return result
 
     return timeit_wrapper
@@ -68,7 +70,7 @@ def N_e_analytical(r: float) -> float:
 
 
 def T_e_analytical(rho: float, N_e_function=N_e_analytical, **kwargs) -> float:
-    """Returns an analytical electron temperature as a function of doppler_dimming_lim.utils.N_e_analytical from Lemaire & Stegen 2016
+    """Returns an analytical electron temperature as a function of doppler_dimming_lim.utils.N_e_analytical from Lemaire and Stegen 2016
 
     Args:
         rho (float): heliocentric distance in solar radii
@@ -126,3 +128,58 @@ def get_sun_center_from_map(map):
 
     coord_pixel = map.wcs.world_to_pixel(coord)
     return coord_pixel
+
+
+def _prepare_for_ddt(
+    data: np.ndarray,
+    template_fname: str,
+    sun_center: list,
+    resample: int,
+) -> sunpy.map.GenericMap:
+    """Get a sunpy map version of the input temperature array which is compatible with IDL Doppler Dimming Tool code.
+
+    Args:
+        data (np.ndarray): input temperature data.
+        template_fname (str): _description_
+        sun_center (list): _description_
+        resample (int): _description_
+
+    Returns:
+        sunpy.map.Map: _description_
+    """
+    info(f"Preparing data for ddt, {resample=}")
+    sample_map = sunpy.map.Map(template_fname)
+
+    scale = sample_map.scale[0] / (data.shape[0] / sample_map.data.shape[0])
+
+    ref_pixel_coordinate = sample_map.reference_coordinate
+    header = sunpy.Map.header_helper.make_fitswcs_header(
+        data=data,
+        coordinate=ref_pixel_coordinate,
+        reference_pixel=sun_center * u.pix,
+        rotation_angle=0 * u.deg,
+        scale=[scale.value, scale.value] * scale.unit,
+    )
+    added_keys = []
+    for key, val in sample_map.meta.items():
+        if key not in header.keys():
+            header[key] = val
+            added_keys.append(key)
+    # print(f"{added_keys = }")
+
+    mapped_data = sunpy.map.Map(data, header)
+
+    mapped_data = mapped_data.resample([resample, resample] * u.pix, method="nearest")
+    if False:
+        # show different methods
+        for method in ["linear", "nearest", "spline"]:
+            mapped_data = Map(data, header)
+            mapped_data = mapped_data.resample(
+                [resample, resample] * u.pix, method=method
+            )
+            fig, ax = plt.subplots(subplot_kw=dict(projection=mapped_data.wcs))
+            mapped_data.plot()
+            mapped_data.draw_limb(color="red")
+        plt.show()
+
+    return mapped_data

@@ -22,7 +22,7 @@ This script contains the command to compile the libraries which is
 gcc is used by default. 
 If you don't have gcc, any other C compiler will work as long as `integrands_lib.so` is correctly produced in the same folder. 
 
-## Test
+## Test (not working yet)
 
 Warnings may appear, to check if the library was installed correctly run the test inside the tests folder. From the downloaded repository use your python version X.X 
 

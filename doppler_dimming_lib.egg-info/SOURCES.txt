@@ -11,7 +11,9 @@ src/doppler_dimming_lib/__init__.py
 src/doppler_dimming_lib/codex.py
 src/doppler_dimming_lib/datacubes.py
 src/doppler_dimming_lib/integrals.py
+src/doppler_dimming_lib/inversion.py
 src/doppler_dimming_lib/metis.py
+src/doppler_dimming_lib/parallelization.py
 src/doppler_dimming_lib/utils.py
 src/doppler_dimming_lib/c_libraries/__init__.py
 src/doppler_dimming_lib/c_libraries/c_lib.py

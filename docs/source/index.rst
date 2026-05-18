@@ -6,11 +6,17 @@
 Welcome to doppler_dimming_lib's documentation!
 ===============================================
 
+Introduction 
+------------
+This documentation covers the doppler_dimming_lib library to invert the electron temperature.
+
+
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 6
    :caption: Contents:
 
-
+   doppler_dimming_lib
 
 Indices and tables
 ==================

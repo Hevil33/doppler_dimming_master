@@ -159,6 +159,7 @@ def I_dl_domega_dphi(
 
 def I_s_lambda(*args, **kwargs) -> float:
     """Wrapper for integrated_I_s used to compute total brightness by passing component=3 to integrated_I_s.
+
     Args:
         rho (float): heliocentric distance in solar radii
         _lambda (float): wavelenght in angstrom

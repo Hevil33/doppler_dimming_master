@@ -38,10 +38,26 @@ doppler\_dimming\_lib.integrals module
    :undoc-members:
    :show-inheritance:
 
+doppler\_dimming\_lib.inversion module
+--------------------------------------
+
+.. automodule:: doppler_dimming_lib.inversion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 doppler\_dimming\_lib.metis module
 ----------------------------------
 
 .. automodule:: doppler_dimming_lib.metis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+doppler\_dimming\_lib.parallelization module
+--------------------------------------------
+
+.. automodule:: doppler_dimming_lib.parallelization
    :members:
    :undoc-members:
    :show-inheritance:

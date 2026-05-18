@@ -1,0 +1,149 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter B
+  \item \spxentry{batch\_2d\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}, 
+		\hyperpage{9}
+  \item \spxentry{batch\_3d\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}, 
+		\hyperpage{9}
+  \item \spxentry{batch\_arrays()}\spxextra{in module doppler\_dimming\_lib.parallelization}, 
+		\hyperpage{9}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{convolve\_codex\_filter()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{2}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{datacube\_from\_map()}\spxextra{in module doppler\_dimming\_lib.datacubes}, 
+		\hyperpage{5}
+  \item \spxentry{datacube\_from\_map()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{8}
+  \item \spxentry{density\_dc\_from\_ddt()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{8}
+  \item \spxentry{doppler\_dimming\_lib}
+    \subitem \spxentry{module}, \hyperpage{10}
+  \item \spxentry{doppler\_dimming\_lib.c\_libraries}
+    \subitem \spxentry{module}, \hyperpage{1}
+  \item \spxentry{doppler\_dimming\_lib.c\_libraries.c\_lib}
+    \subitem \spxentry{module}, \hyperpage{1}
+  \item \spxentry{doppler\_dimming\_lib.codex}
+    \subitem \spxentry{module}, \hyperpage{2}
+  \item \spxentry{doppler\_dimming\_lib.data}
+    \subitem \spxentry{module}, \hyperpage{1}
+  \item \spxentry{doppler\_dimming\_lib.datacubes}
+    \subitem \spxentry{module}, \hyperpage{5}
+  \item \spxentry{doppler\_dimming\_lib.integrals}
+    \subitem \spxentry{module}, \hyperpage{5}
+  \item \spxentry{doppler\_dimming\_lib.inversion}
+    \subitem \spxentry{module}, \hyperpage{6}
+  \item \spxentry{doppler\_dimming\_lib.metis}
+    \subitem \spxentry{module}, \hyperpage{7}
+  \item \spxentry{doppler\_dimming\_lib.parallelization}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{doppler\_dimming\_lib.spectra}
+    \subitem \spxentry{module}, \hyperpage{2}
+  \item \spxentry{doppler\_dimming\_lib.spectra.spectra}
+    \subitem \spxentry{module}, \hyperpage{2}
+  \item \spxentry{doppler\_dimming\_lib.utils}
+    \subitem \spxentry{module}, \hyperpage{9}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{geom\_factor\_function()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{8}
+  \item \spxentry{get\_3d\_param()}\spxextra{in module doppler\_dimming\_lib.metis}, \hyperpage{8}
+  \item \spxentry{get\_c\_library()}\spxextra{in module doppler\_dimming\_lib.c\_libraries.c\_lib}, 
+		\hyperpage{1}
+  \item \spxentry{get\_ne\_map()}\spxextra{in module doppler\_dimming\_lib.metis}, \hyperpage{8}
+  \item \spxentry{get\_pix\_to\_rsun()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{8}
+  \item \spxentry{get\_pix\_to\_rsun()}\spxextra{in module doppler\_dimming\_lib.utils}, 
+		\hyperpage{10}
+  \item \spxentry{get\_R\_as\_spline()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{2}
+  \item \spxentry{get\_spectrum\_from\_txt()}\spxextra{in module doppler\_dimming\_lib.spectra.spectra}, 
+		\hyperpage{2}
+  \item \spxentry{get\_sun\_center\_from\_map()}\spxextra{in module doppler\_dimming\_lib.utils}, 
+		\hyperpage{10}
+  \item \spxentry{get\_T\_from\_R()}\spxextra{in module doppler\_dimming\_lib.codex}, \hyperpage{3}
+  \item \spxentry{get\_T\_W\_from\_codex()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{3}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{I\_dl\_domega\_dphi()}\spxextra{in module doppler\_dimming\_lib.integrals}, 
+		\hyperpage{5}
+  \item \spxentry{I\_s\_lambda()}\spxextra{in module doppler\_dimming\_lib.integrals}, 
+		\hyperpage{5}
+  \item \spxentry{integrated\_I\_s()}\spxextra{in module doppler\_dimming\_lib.integrals}, 
+		\hyperpage{5}
+  \item \spxentry{invert\_temperature\_batch()}\spxextra{in module doppler\_dimming\_lib.inversion}, 
+		\hyperpage{6}
+  \item \spxentry{invert\_temperature\_parallel()}\spxextra{in module doppler\_dimming\_lib.inversion}, 
+		\hyperpage{7}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{main()}\spxextra{in module doppler\_dimming\_lib.parallelization}, \hyperpage{9}
+  \item \spxentry{map\_from\_ddt()}\spxextra{in module doppler\_dimming\_lib.datacubes}, 
+		\hyperpage{5}
+  \item \spxentry{merge\_2d\_batched\_array()}\spxextra{in module doppler\_dimming\_lib.parallelization}, 
+		\hyperpage{9}
+  \item \spxentry{module}
+    \subitem \spxentry{doppler\_dimming\_lib}, \hyperpage{10}
+    \subitem \spxentry{doppler\_dimming\_lib.c\_libraries}, \hyperpage{1}
+    \subitem \spxentry{doppler\_dimming\_lib.c\_libraries.c\_lib}, \hyperpage{1}
+    \subitem \spxentry{doppler\_dimming\_lib.codex}, \hyperpage{2}
+    \subitem \spxentry{doppler\_dimming\_lib.data}, \hyperpage{1}
+    \subitem \spxentry{doppler\_dimming\_lib.datacubes}, \hyperpage{5}
+    \subitem \spxentry{doppler\_dimming\_lib.integrals}, \hyperpage{5}
+    \subitem \spxentry{doppler\_dimming\_lib.inversion}, \hyperpage{6}
+    \subitem \spxentry{doppler\_dimming\_lib.metis}, \hyperpage{7}
+    \subitem \spxentry{doppler\_dimming\_lib.parallelization}, \hyperpage{9}
+    \subitem \spxentry{doppler\_dimming\_lib.spectra}, \hyperpage{2}
+    \subitem \spxentry{doppler\_dimming\_lib.spectra.spectra}, \hyperpage{2}
+    \subitem \spxentry{doppler\_dimming\_lib.utils}, \hyperpage{9}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{N\_e\_analytical()}\spxextra{in module doppler\_dimming\_lib.utils}, 
+		\hyperpage{9}
+  \item \spxentry{Ne\_exponential\_fit()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{7}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{read\_sav\_model()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{9}
+  \item \spxentry{resample\_ddt\_ne()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{9}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{set\_codex\_transmittancies()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{3}
+  \item \spxentry{set\_spectrum\_level()}\spxextra{in module doppler\_dimming\_lib.spectra.spectra}, 
+		\hyperpage{2}
+  \item \spxentry{simulate\_codex\_chunk()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{4}
+  \item \spxentry{simulate\_codex\_filter()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{4}
+  \item \spxentry{simulate\_codex\_images()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{4}
+  \item \spxentry{simulate\_codex\_measure()}\spxextra{in module doppler\_dimming\_lib.codex}, 
+		\hyperpage{4}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{T\_e\_analytical()}\spxextra{in module doppler\_dimming\_lib.utils}, 
+		\hyperpage{9}
+  \item \spxentry{Te\_pos\_from\_ne()}\spxextra{in module doppler\_dimming\_lib.metis}, 
+		\hyperpage{7}
+  \item \spxentry{timeit()}\spxextra{in module doppler\_dimming\_lib.utils}, \hyperpage{10}
+
+\end{sphinxtheindex}
