@@ -17,7 +17,7 @@ dependencies = [
     "numpy",
     "pandas",
     "scipy",
-    "sunpy",
+    "sunpy[all]",
     "tqdm",
     "openpyxl",
 ]
