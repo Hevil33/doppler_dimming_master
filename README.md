@@ -9,9 +9,12 @@ Go into the downloaded folder and install the library with pip
 `cd doppler_dimming_master`
 `pip install .`
 
+Ensure to install sunpy via
 
-C files need to be compiled for this module to work.
-Go into the installation folder (usually pythonX.X/site-packages) and run the script
+`pip install sunpy[all]`
+
+C files need to be compiled for this module to work, which should be done automatically while installing.
+If not, go into the installation folder (usually pythonX.X/site-packages) and run the script
 
 `./compile.sh`
 
@@ -22,7 +25,7 @@ This script contains the command to compile the libraries which is
 gcc is used by default. 
 If you don't have gcc, any other C compiler will work as long as `integrands_lib.so` is correctly produced in the same folder. 
 
-## Test (not working yet)
+## Test 
 
 Warnings may appear, to check if the library was installed correctly run the test inside the tests folder. From the downloaded repository use your python version X.X 
 

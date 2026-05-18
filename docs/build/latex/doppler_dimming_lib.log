@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.12.19)  7 MAY 2026 11:43
+This is LuaHBTeX, Version 1.18.0 (TeX Live 2024)  (format=lualatex 2024.12.19)  18 MAY 2026 12:30
  system commands enabled.
  file:line:error style messages enabled.
 **/home/herve/dottorato/doppler_dimming/programs/doppler_dimming_master/docs/build/latex/doppler_dimming_lib.tex
@@ -890,7 +890,7 @@ LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10> not available
 [1
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 240.
+LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 243.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tex-gyre/ts1qtm.fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
 )
@@ -1086,12 +1086,12 @@ Here is how much of LuaTeX's memory you used:
  100000,953878 words of node,token memory allocated
  599 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 11 attribute, 72 glue_spec, 7 attribute_list, 2 write nodes
-   avail lists: 2:1793,3:514,4:260,5:699,6:164,7:5895,8:16,9:587,10:23,11:363,12:2
+   avail lists: 2:1813,3:510,4:260,5:699,6:164,7:5728,8:16,9:581,10:23,11:367,12:2
  39468 multiletter control sequences out of 65536+600000
  67 fonts using 4382503 bytes
- 72i,12n,75p,886b,692s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,75p,886b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc}</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvbi.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmb.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmri.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/t1xtt.pfb>
-Output written on doppler_dimming_lib.pdf (20 pages, 200589 bytes).
+Output written on doppler_dimming_lib.pdf (20 pages, 200746 bytes).
 
 PDF statistics: 395 PDF objects out of 1000 (max. 8388607)
  355 compressed objects within 4 object streams

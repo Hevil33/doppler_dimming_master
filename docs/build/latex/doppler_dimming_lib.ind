@@ -143,7 +143,7 @@
   \item \spxentry{T\_e\_analytical()}\spxextra{in module doppler\_dimming\_lib.utils}, 
 		\hyperpage{9}
   \item \spxentry{Te\_pos\_from\_ne()}\spxextra{in module doppler\_dimming\_lib.metis}, 
-		\hyperpage{7}
+		\hyperpage{8}
   \item \spxentry{timeit()}\spxextra{in module doppler\_dimming\_lib.utils}, \hyperpage{10}
 
 \end{sphinxtheindex}
